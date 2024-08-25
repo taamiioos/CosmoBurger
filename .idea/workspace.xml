@@ -4,13 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="" />
+    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/app-header/app-header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/app-header/app-header.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -25,6 +45,9 @@
     &quot;accountId&quot;: &quot;91aa3ae0-644e-4adf-8c64-dac60ab2ce34&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -36,7 +59,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sprint-1/step-1&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -49,6 +72,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -89,6 +113,15 @@
       <option name="presentableId" value="Default" />
       <updated>1724252817305</updated>
       <workItem from="1724252818446" duration="1312000" />
+      <workItem from="1724262550409" duration="701000" />
+      <workItem from="1724263554832" duration="28000" />
+      <workItem from="1724263591734" duration="206000" />
+      <workItem from="1724263810599" duration="5500000" />
+      <workItem from="1724339980710" duration="12710000" />
+      <workItem from="1724503770665" duration="5727000" />
+      <workItem from="1724509515059" duration="5876000" />
+      <workItem from="1724533003129" duration="3532000" />
+      <workItem from="1724595936277" duration="4456000" />
     </task>
     <servers />
   </component>
