@@ -10,17 +10,22 @@
     0 0 10px rgba(0, 0, 0, 0.04),
     0 0 15px rgba(0, 0, 0, 0.04),
     0 0 20px rgba(0, 0, 0, 0.04);
+    margin: 0 auto;
+    width: 100%;
 }
 
-.header-container {
-    width: 1280px;
-    margin-left: 320px;
-
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
 nav {
     display: flex;
     align-items: center;
+    margin: 0 auto;
 }
 
 .ul1, .ul2 {
@@ -54,8 +59,8 @@ li {
     margin-left: 112px;
     width: 289px;
     height: 40px;
-}
 
+}
 .profile {
     justify-content: flex-end;
     margin-left: 320px;

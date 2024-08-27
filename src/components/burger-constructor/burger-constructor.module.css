@@ -2,8 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: 600px;
-    height: 912px;
     margin-top: 88px;
     margin-left: 40px;
     margin-right: 340px;
@@ -22,7 +20,6 @@
     align-items: flex-end;
     justify-items: center;
     gap: 40px;
-
 }
 .elementRow {
     display: flex;
@@ -38,4 +35,11 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(133, 133, 173, 1) transparent;
+}
+.hidden{
+    visibility: hidden;
+}
+.iconBlock{
+    display: flex;
+    align-self: center;
 }

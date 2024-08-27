@@ -1,9 +1,8 @@
+import styles from './app-header.module.css';
 import {Logo} from '@ya.praktikum/react-developer-burger-ui-components';
 import {BurgerIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {ProfileIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {ListIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import styles from './app-header.module.css';
-
 
 const AppHeader = () => {
     return (
@@ -15,7 +14,7 @@ const AppHeader = () => {
                             <BurgerIcon type="primary"/>
                             <span className='text text_type_main-default pl-1'>Конструктор</span>
                         </li>
-                        <li className={styles.navItem}>
+                        <li>
                             <ListIcon type="secondary"/>
                             <span className='text text_type_main-default text_color_inactive pl-2'>Лента заказов</span>
                         </li>

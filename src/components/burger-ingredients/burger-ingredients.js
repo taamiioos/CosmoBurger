@@ -1,11 +1,24 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import burgerStyles from "../burger-ingredients/burger-ingredients.module.css";
-import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {Counter} from '@ya.praktikum/react-developer-burger-ui-components';
+import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Counter } from '@ya.praktikum/react-developer-burger-ui-components';
+import IngredientDetails from '../modal/ingredient-details/ingredient-details'
 
-const BurgerIngredients = ({ingredients}) => {
+const BurgerIngredients = ({ ingredients }) => {
     const [useTab, setUseTab] = React.useState("Булки");
+    const [clickIngredient, setClickIngredient] = React.useState(null);
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+    const handleModalOpen = (ingredient) => {
+        setClickIngredient(ingredient);
+        setIsModalOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setClickIngredient(null);
+        setIsModalOpen(false);
+    }
 
     const bunsRef = React.useRef(null);
     const saucesRef = React.useRef(null);
@@ -14,11 +27,11 @@ const BurgerIngredients = ({ingredients}) => {
     const handleTabChange = (tab) => {
         setUseTab(tab);
         if (tab === "Булки" && bunsRef.current) {
-            bunsRef.current.scrollIntoView({behavior: "smooth"});
+            bunsRef.current.scrollIntoView({ behavior: "smooth" });
         } else if (tab === "Соусы" && saucesRef.current) {
-            saucesRef.current.scrollIntoView({behavior: "smooth"});
+            saucesRef.current.scrollIntoView({ behavior: "smooth" });
         } else if (tab === "Начинки" && fillingsRef.current) {
-            fillingsRef.current.scrollIntoView({behavior: "smooth"});
+            fillingsRef.current.scrollIntoView({ behavior: "smooth" });
         }
     };
 
@@ -66,44 +79,48 @@ const BurgerIngredients = ({ingredients}) => {
                 <div className={burgerStyles.ingredients}>
                     <h2 ref={bunsRef}>Булки</h2>
                     {ingredients.filter((ingredient) => ingredient.type === "bun").map((ingredient) => (
-                        <div key={ingredient._id} className={burgerStyles.ingredientItem}>
-                            <img src={ingredient.image} alt={ingredient.name}/>
+                        <div key={ingredient._id} className={burgerStyles.ingredientItem} onClick={() => handleModalOpen(ingredient)}>
+                            <img src={ingredient.image} alt={ingredient.name} />
                             {(ingredient._id === "60666c42cc7b410027a1a9b1") && (
-                                <Counter count={1} size="default" extraClass="m-1"/>
+                                <Counter count={1} size="default" extraClass="m-1" />
                             )}
-                            <span style={{display: 'flex', flexDirection: 'row', gap: '8px'}}>
-                                    <p>{ingredient.price}</p>
-                                    <CurrencyIcon type="primary"/>
-                                </span>
+                            <span className={burgerStyles.priceBlock}>
+                                <p>{ingredient.price}</p>
+                                <CurrencyIcon type="primary" />
+                            </span>
                             <p>{ingredient.name}</p>
                         </div>
                     ))}
 
                     <h2 ref={saucesRef}>Соусы</h2>
                     {ingredients.filter((ingredient) => ingredient.type === "sauce").map((ingredient) => (
-                        <div key={ingredient._id} className={burgerStyles.ingredientItem}>
-                            <img src={ingredient.image} alt={ingredient.name}/>
-                            <span style={{display: 'flex', flexDirection: 'row', gap: '8px'}}>
-                                    <p>{ingredient.price}</p>
-                                    <CurrencyIcon type="primary"/>
-                                </span>
+                        <div key={ingredient._id} className={burgerStyles.ingredientItem} onClick={() => handleModalOpen(ingredient)}>
+                            <img src={ingredient.image} alt={ingredient.name} />
+                            <span className={burgerStyles.priceBlock}>
+                                <p>{ingredient.price}</p>
+                                <CurrencyIcon type="primary" />
+                            </span>
                             <p>{ingredient.name}</p>
                         </div>
                     ))}
 
                     <h2 ref={fillingsRef}>Начинки</h2>
                     {ingredients.filter((ingredient) => ingredient.type === "main").map((ingredient) => (
-                        <div key={ingredient._id} className={burgerStyles.ingredientItem}>
-                            <img src={ingredient.image} alt={ingredient.name}/>
-                            <span style={{display: 'flex', flexDirection: 'row', gap: '8px'}}>
-                                    <p>{ingredient.price}</p>
-                                    <CurrencyIcon type="primary"/>
-                                </span>
+                        <div key={ingredient._id} className={burgerStyles.ingredientItem} onClick={() => handleModalOpen(ingredient)}>
+                            <img src={ingredient.image} alt={ingredient.name} />
+                            <span className={burgerStyles.priceBlock}>
+                                <p>{ingredient.price}</p>
+                                <CurrencyIcon type="primary" />
+                            </span>
                             <p>{ingredient.name}</p>
                         </div>
                     ))}
                 </div>
             </div>
+            {isModalOpen && clickIngredient && (
+                <IngredientDetails title="Детали ингредиента" onClose={handleCloseModal} ingredient={clickIngredient}>
+                </IngredientDetails>
+            )}
         </div>
     );
 };
