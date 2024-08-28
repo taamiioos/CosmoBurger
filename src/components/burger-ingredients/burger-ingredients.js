@@ -3,21 +3,25 @@ import PropTypes from "prop-types";
 import burgerStyles from "../burger-ingredients/burger-ingredients.module.css";
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Counter } from '@ya.praktikum/react-developer-burger-ui-components';
-import IngredientDetails from '../modal/ingredient-details/ingredient-details'
+import IngredientDetails from '../modal/ingredient-details/ingredient-details';
+import { useModal } from '../../hooks/use-modal';
+import {common} from '../types/common';
+import Modal from '../modal/modal';
+
 
 const BurgerIngredients = ({ ingredients }) => {
     const [useTab, setUseTab] = React.useState("Булки");
     const [clickIngredient, setClickIngredient] = React.useState(null);
-    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const { isModalOpen, openModal, closeModal } = useModal();
 
     const handleModalOpen = (ingredient) => {
         setClickIngredient(ingredient);
-        setIsModalOpen(true);
+        openModal(true);
     }
 
     const handleCloseModal = () => {
         setClickIngredient(null);
-        setIsModalOpen(false);
+        closeModal(false);
     }
 
     const bunsRef = React.useRef(null);
@@ -118,29 +122,16 @@ const BurgerIngredients = ({ ingredients }) => {
                 </div>
             </div>
             {isModalOpen && clickIngredient && (
-                <IngredientDetails title="Детали ингредиента" onClose={handleCloseModal} ingredient={clickIngredient}>
-                </IngredientDetails>
+                <Modal title="Детали ингредиента" onClose={handleCloseModal}>
+                    <IngredientDetails ingredient={clickIngredient} />
+                </Modal>
             )}
         </div>
     );
 };
 
 BurgerIngredients.propTypes = {
-    ingredients: PropTypes.arrayOf(
-        PropTypes.shape({
-            _id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            type: PropTypes.string.isRequired,
-            proteins: PropTypes.number,
-            fat: PropTypes.number,
-            carbohydrates: PropTypes.number,
-            calories: PropTypes.number,
-            price: PropTypes.number.isRequired,
-            image: PropTypes.string.isRequired,
-            image_mobile: PropTypes.string,
-            image_large: PropTypes.string,
-        })
-    ).isRequired,
+    ingredients: PropTypes.arrayOf(common).isRequired,
 };
 
 export default BurgerIngredients;

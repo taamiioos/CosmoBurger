@@ -1,62 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
 import burgerConstructorStyles from "./burger-constructor.module.css";
 import {ConstructorElement} from '@ya.praktikum/react-developer-burger-ui-components';
 import {DragIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from '../modal/order-details/order-details';
+import {useModal} from '../../hooks/use-modal';
+import {ingredients} from '../../utils/ingredients';
+import Modal from '../modal/modal';
 
-const ingredients = [
-    {
-        text: "Соус традиционный галактический",
-        price: 30,
-        thumbnail: "https://code.s3.yandex.net/react/code/sauce-03.png"
-    },
-    {
-        text: "Мясо бессмертных моллюсков Protostomia",
-        price: 300,
-        thumbnail: "https://code.s3.yandex.net/react/code/meat-02.png"
-    },
-    {text: "Плоды Фалленианского дерева", price: 80, thumbnail: "https://code.s3.yandex.net/react/code/sp_1.png"},
-    {
-        text: "Хрустящие минеральные кольца",
-        price: 80,
-        thumbnail: "https://code.s3.yandex.net/react/code/mineral_rings.png"
-    },
-    {
-        text: "Хрустящие минеральные кольца",
-        price: 80,
-        thumbnail: "https://code.s3.yandex.net/react/code/mineral_rings.png"
-    },
-    {
-        text: "Хрустящие минеральные кольца",
-        price: 80,
-        thumbnail: "https://code.s3.yandex.net/react/code/mineral_rings.png"
-    },
-    {
-        text: "Хрустящие минеральные кольца",
-        price: 80,
-        thumbnail: "https://code.s3.yandex.net/react/code/mineral_rings.png"
-    }
-];
 
 const BurgerConstructor = () => {
     const [allPrice, setAllPrice] = React.useState(0);
-    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const {isModalOpen, openModal, closeModal} = useModal();
 
-    const handleModalOpen = () => {
-        setIsModalOpen(true);
-    }
-
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    }
     const countPrice = () => {
         let totalPrice = 20 + 30 + 300 + 80 + 80 + 80 + 80 + 80 + 200;
         setAllPrice(totalPrice);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         countPrice()
     }, []);
 
@@ -104,12 +67,14 @@ const BurgerConstructor = () => {
                     {allPrice}
                     <span><CurrencyIcon type="primary"/></span>
                 </span>
-                <Button htmlType="button" type="primary" size="large" onClick={handleModalOpen}>
+                <Button htmlType="button" type="primary" size="large" onClick={openModal}>
                     Оформить заказ
                 </Button>
             </div>
             {isModalOpen && (
-                <OrderDetails onClose={handleCloseModal} numOrder={'034536'}/>
+                <Modal onClose={closeModal}>
+                    <OrderDetails numOrder={'034536'}/>
+                </Modal>
             )}
         </div>
     );
