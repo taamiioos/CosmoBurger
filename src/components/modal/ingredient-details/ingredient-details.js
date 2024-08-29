@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './ingredient-details.module.css';
 import {common} from '../../types/common';
 
@@ -47,8 +46,6 @@ const IngredientDetails = ({ingredient}) => {
 
 
 IngredientDetails.propTypes = {
-    children: PropTypes.node,
-    onClose: PropTypes.func.isRequired,
     ingredient: common,
 };
 export default IngredientDetails;

@@ -16,9 +16,6 @@ const OrderDetails = ({numOrder}) => {
     );
 };
 OrderDetails.propTypes = {
-    title: PropTypes.string,
-    children: PropTypes.node,
-    onClose: PropTypes.func.isRequired,
     numOrder: PropTypes.string.isRequired,
 };
 export default OrderDetails;
