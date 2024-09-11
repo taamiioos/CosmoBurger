@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './ingredient-details.module.css';
-import {common} from '../../types/common';
+import { useSelector } from 'react-redux';
 
-const IngredientDetails = ({ingredient}) => {
+const IngredientDetails = () => {
+    const ingredient = useSelector((state)=>state.ingredients.currentIngredient)
     return (
         <div className={styles.modalContent}>
             {ingredient && (
@@ -44,8 +45,4 @@ const IngredientDetails = ({ingredient}) => {
     );
 };
 
-
-IngredientDetails.propTypes = {
-    ingredient: common,
-};
 export default IngredientDetails;

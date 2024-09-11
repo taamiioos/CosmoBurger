@@ -1,12 +1,8 @@
 import styles from './app-header.module.css';
-import {Logo} from '@ya.praktikum/react-developer-burger-ui-components';
-import {BurgerIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ProfileIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ListIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Logo, BurgerIcon, ProfileIcon, ListIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 
 const AppHeader = () => {
-    return (
-        <div className={styles.container}>
+    return (<div className={styles.container}>
             <header className={styles.headerContainer}>
                 <nav>
                     <ul className={styles.ul1}>
@@ -30,8 +26,7 @@ const AppHeader = () => {
                     </ul>
                 </nav>
             </header>
-        </div>
-    );
+        </div>);
 };
 
 export default AppHeader;
