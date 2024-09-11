@@ -1,0 +1,47 @@
+.numOrderStyle {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    color: rgba(242, 242, 243, 1);
+    text-shadow: 0 4px 32px rgba(51, 51, 255, 0.5),
+    0 0 8px 8px rgba(51, 51, 255, 0.25),
+    0 0 16px 8px rgba(51, 51, 255, 0.25);
+}
+
+.modalContent {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.idOrder {
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.orderImageStyle {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.textStyle1 {
+    margin-top: 60px;
+    white-space: nowrap;
+}
+
+.textStyle2 {
+    margin-top: 8px;
+    white-space: nowrap;
+    margin-bottom: 120px;
+}
+
+.closeIcon {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: 40px;
+}

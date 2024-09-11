@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 912px;
+    margin-top: 128px;
+    margin-left: 340px;
+    background-color: rgba(19, 19, 22, 1);
+}
+h1 {
+    display: flex;
+    justify-self: flex-start;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.tabs button {
+    background-color: transparent;
+    width: 200px;
+    height: 56px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.tabs button.active {
+    border-bottom: 2px solid rgba(76, 76, 255, 1);
+}
+
+.tabContent {
+    display: flex;
+    justify-content: center;
+}
+
+.ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 700px;
+    margin-top: 24px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(133, 133, 173, 1) transparent;
+}
+
+.ingredientItem {
+    position: relative;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 272px;
+    height: 208px;
+    align-items: center;
+}
+.ingredientItem p {
+    margin: 5px 0;
+    color: white;
+}
+h2 {
+    width: 100%;
+    color: white;
+    text-align: left;
+}
+.priceBlock{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
