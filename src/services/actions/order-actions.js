@@ -1,30 +1,31 @@
-import {ORDER_REQUEST, ORDER_SUCCESS, ORDER_ERROR} from './action-types';
-const URL_ORDER = `https://norma.nomoreparties.space/api/orders`;
+import { ORDER_REQUEST, ORDER_SUCCESS, ORDER_ERROR, RESET_INGREDIENT_COUNT } from './action-types';
+import { request } from '../../api/request-response';
 
 export const makeOrder = (ingredients) => {
     return (dispatch) => {
-        dispatch({type: ORDER_REQUEST});
-        fetch(`${URL_ORDER}`, {
-            method: 'POST', headers: {
-                'Content-Type': 'application/json'
-            }, body: JSON.stringify({ingredients})
+        dispatch({ type: ORDER_REQUEST });
+
+        return request('/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ingredients }),
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .then(data => {
+            .then((data) => {
                 dispatch({
-                    type: ORDER_SUCCESS, payload: data.order.number
+                    type: ORDER_SUCCESS,
+                    payload: data.order.number,
                 });
+                dispatch({ type: RESET_INGREDIENT_COUNT });
             })
-            .catch(error => {
+            .catch((error) => {
                 dispatch({
-                    type: ORDER_ERROR, payload: error.message
+                    type: ORDER_ERROR,
+                    payload: error.message,
                 });
                 console.error(`Ошибка: ${error.message}`);
+                throw error;
             });
     };
 };

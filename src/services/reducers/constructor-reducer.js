@@ -1,4 +1,4 @@
-import {ADD_INGREDIENT, REMOVE_INGREDIENT, REPLACE_BUN, SET_PRICE, MOVE_INGREDIENT} from '../actions/action-types';
+import {ADD_INGREDIENT, REMOVE_INGREDIENT, REPLACE_BUN, SET_PRICE, MOVE_INGREDIENT, CLEAR_CONSTRUCTOR} from '../actions/action-types';
 
 const initialState = {
     bun: null, ingredients: [], price: null
@@ -24,7 +24,14 @@ const constructorReducer = (state = initialState, action) => {
             return {
                 ...state, price: action.payload,
             };
-
+        case CLEAR_CONSTRUCTOR: {
+            return {
+                ...state,
+                bun: null,
+                ingredients: [],
+                price: 0
+            };
+        }
         case MOVE_INGREDIENT: {
             const {dragIndex, hoverIndex} = action.payload;
             const newIngredients = [...state.ingredients];
@@ -34,7 +41,6 @@ const constructorReducer = (state = initialState, action) => {
                 ...state, ingredients: newIngredients,
             };
         }
-
         default:
             return state;
     }

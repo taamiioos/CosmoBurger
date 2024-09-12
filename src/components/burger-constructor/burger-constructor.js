@@ -1,15 +1,17 @@
 import React, { useEffect} from "react";
 import burgerConstructorStyles from "./burger-constructor.module.css";
-import { ConstructorElement, DragIcon, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { ConstructorElement, DragIcon, Button, CurrencyIcon, Loader } from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from '../modal/order-details/order-details';
 import { useModal } from '../../hooks/use-modal';
 import Modal from '../modal/modal';
 import { useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
-import { addIngredient, removeIngredient, replaceBun, setPrice, moveIngredient } from '../../services/actions/constructor-actions';
+import { addIngredient, removeIngredient, replaceBun, setPrice, moveIngredient, clearConstructor } from '../../services/actions/constructor-actions';
 import { makeOrder } from '../../services/actions/order-actions';
 import { decrementIngredientCount, incrementIngredientCount } from '../../services/actions/ingredients-actions';
 import DraggableIngredient from './draggable-ingredient';
+import { ClipLoader } from 'react-spinners';
+
 
 const BurgerConstructor = () => {
     const dispatch = useDispatch();
@@ -19,7 +21,13 @@ const BurgerConstructor = () => {
 
     const handleOrder = () => {
         const ingredientIds = ingredients.map(ingredient => ingredient._id);
-        dispatch(makeOrder(ingredientIds));
+        dispatch(makeOrder(ingredientIds))
+            .then(() => {
+                dispatch(clearConstructor());
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
 
     useEffect(() => {
@@ -86,7 +94,7 @@ const BurgerConstructor = () => {
             <section className={burgerConstructorStyles.burgerScroll}>
                 {ingredients.map((ingredient, index) => (
                     <DraggableIngredient
-                        key={`${ingredient._id}-${index}`}
+                        key={ingredient.uniqueId}
                         index={index}
                         ingredient={ingredient}
                         moveIngredient={handleMoveIngredient}
@@ -115,8 +123,14 @@ const BurgerConstructor = () => {
                     {price}
                     <span><CurrencyIcon type="primary" /></span>
                 </span>
-                <Button htmlType="button" type="primary" size="large" onClick={handleOrder}>
-                    Оформить заказ
+                <Button
+                    htmlType="button"
+                    type="primary"
+                    size="large"
+                    onClick={handleOrder}
+                    disabled={orderRequest}
+                >
+                    {orderRequest ? <ClipLoader /> : 'Оформить заказ'}
                 </Button>
             </div>
             {isModalOpen && (<Modal onClose={closeModal}>

@@ -4,7 +4,8 @@ import {
     CLEAR_CURRENT_INGREDIENT,
     INCREMENT_INGREDIENT_COUNT,
     DECREMENT_INGREDIENT_COUNT,
-    INGREDIENTS_REQUEST, INGREDIENTS_SUCCESS, INGREDIENTS_ERROR
+    INGREDIENTS_REQUEST, INGREDIENTS_SUCCESS, INGREDIENTS_ERROR,
+    RESET_INGREDIENT_COUNT
 } from './../actions/action-types';
 
 const initialState = {
@@ -49,7 +50,16 @@ const ingredientsReducer = (state = initialState, action) => {
                 ingredients: state.ingredients.map(ingredient => ingredient._id === action.payload && ingredient.count > 0 ? {
                     ...ingredient, count: ingredient.count - 1
                 } : ingredient),
-            };
+            }
+        case RESET_INGREDIENT_COUNT:
+            return {
+                ...state,
+                ingredients: state.ingredients.map(ingredient => ({
+                    ...ingredient,
+                    count: 0
+                }))
+            }
+
         default:
             return state;
     }

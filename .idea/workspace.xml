@@ -4,32 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="sprint 1/ step 2&#10;fix">
-      <change afterPath="$PROJECT_DIR$/src/components/burger-constructor/draggable-ingredient.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/actions/action-types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/actions/constructor-actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/actions/ingredients-actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/actions/order-actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/order-reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/root-reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/store.js" afterDir="false" />
+    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="sprint 2/ step 1">
+      <change afterPath="$PROJECT_DIR$/src/api/api-config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/request-response.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/apiConfig.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/order-details/order-details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/order-details/order-details.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ingredients.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/actions/action-types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/action-types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/actions/constructor-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/constructor-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/actions/ingredients-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/ingredients-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/actions/order-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/order-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +51,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/api/request-response.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/app-header/app-header.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/burger-constructor/draggable-ingredient.js" root0="FORCE_HIGHLIGHTING" />
@@ -86,7 +72,7 @@
     <setting file="file://$PROJECT_DIR$/src/services/store.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -99,32 +85,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;sprint-2&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/tata/IdeaProjects/react-burger/src/components/modal/ingredient-details&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.npm start.executor&quot;: &quot;Run&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#4 on sprint-2",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/tata/IdeaProjects/react-burger/src/api",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.npm start.executor": "Run",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/api" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/modal/ingredient-details" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -198,7 +186,9 @@
       <workItem from="1725473723501" duration="4107000" />
       <workItem from="1725547997107" duration="6143000" />
       <workItem from="1725799472657" duration="12577000" />
-      <workItem from="1725949755492" duration="24956000" />
+      <workItem from="1725949755492" duration="25945000" />
+      <workItem from="1726131452704" duration="704000" />
+      <workItem from="1726156839800" duration="5292000" />
     </task>
     <task id="LOCAL-00001" summary="sprint 1/ step 1">
       <option name="closed" value="true" />
@@ -232,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724928391940</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="sprint 2/ step 1">
+      <option name="closed" value="true" />
+      <created>1726061125112</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726061125112</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +252,8 @@
     <MESSAGE value="sprint 1/ step 1" />
     <MESSAGE value="sprint 1/ step 2" />
     <MESSAGE value="sprint 1/ step 2&#10;fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="sprint 1/ step 2&#10;fix" />
+    <MESSAGE value="sprint 2/ step 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprint 2/ step 1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
