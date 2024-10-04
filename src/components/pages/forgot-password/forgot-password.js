@@ -3,8 +3,8 @@ import React, {useEffect} from "react";
 import {Button, Input} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Link, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { forgotPasswordRequest, setEmailForgot } from '../../services/actions/password-actions';
-import { markForgotPasswordVisited} from '../../services/actions/auth-actions';
+import { forgotPasswordRequest, setEmailForgot } from '../../../services/actions/password-actions';
+import { markForgotPasswordVisited} from '../../../services/actions/auth-actions';
 
 const ForgotPassword = () => {
     const navigate = useNavigate();

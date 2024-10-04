@@ -1,5 +1,5 @@
 import React from "react";
-import { registerUser, setEmailRegister, setPasswordRegister, setNameRegister } from './../../services/actions/auth-actions';
+import { registerUser, setEmailRegister, setPasswordRegister, setNameRegister } from '../../../services/actions/auth-actions';
 import { Button, Input, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
 import {Link} from 'react-router-dom';
 import styles from './registration.module.css';

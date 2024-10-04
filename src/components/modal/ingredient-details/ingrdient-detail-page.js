@@ -1,21 +1,15 @@
-import React, {useEffect} from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {setCurrentIngredient, setIngredients} from '../../../services/actions/ingredients-actions';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentIngredient } from '../../../services/actions/ingredients-actions';
 import IngredientDetails from './ingredient-details';
 import styles from './ingredient-details.module.css';
 
 const IngredientDetailsPage = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {ingredients, currentIngredient} = useSelector((state) => state.ingredients);
-
-    useEffect(() => {
-        if (ingredients.length === 0) {
-            dispatch(setIngredients());
-        }
-    }, [dispatch, ingredients]);
+    const { ingredients } = useSelector((state) => state.ingredients);
 
     useEffect(() => {
         if (id && ingredients.length > 0) {
@@ -31,7 +25,7 @@ const IngredientDetailsPage = () => {
     return (
         <div className={styles.ingredientPage}>
             <h1 className="text text_type_main-large">Детали ингредиента</h1>
-            <IngredientDetails ingredient={currentIngredient}/>
+            <IngredientDetails/>
         </div>
     );
 };

@@ -1,34 +1,41 @@
-import React from 'react';
+import React, {useEffect} from "react";
 import styles from './app.module.css';
 import AppHeader from '../app-header/app-header';
-import Registration from '../registration/registration';
+import Registration from '../pages/registration/registration';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
-import ForgotPassword from '../forgot-password/forgot-password';
-import Login from '../login/login';
-import Profile from '../profile/profile';
-import ResetPassword from '../reset-password/reset-password';
+import ForgotPassword from '../pages/forgot-password/forgot-password';
+import Login from '../pages/login/login';
+import Profile from '../pages/profile/profile';
+import ResetPassword from '../pages/reset-password/reset-password';
 import {DndProvider} from 'react-dnd';
+import {Routes, Route, useLocation, useNavigate, useParams} from 'react-router-dom';
 import {HTML5Backend} from 'react-dnd-html5-backend';
-import {Routes, Route, Navigate, useLocation, useNavigate} from 'react-router-dom';
 import {ProtectedRouteElement} from '../protected-element/protected-route-element';
 import {RestrictedRoute} from '../protected-element/restricted-route';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import IngredientDetails from '../modal/ingredient-details/ingredient-details';
 import IngredientDetailsPage from '../modal/ingredient-details/ingrdient-detail-page';
-import Page404 from '../404page/404page';
-import {useModal} from '../../hooks/use-modal';
+import Page404 from '../pages/404page/404page';
+import {Navigate} from 'react-router-dom';
 import Modal from '../modal/modal';
+import {setIngredients} from '../../services/actions/ingredients-actions';
 
+// У меня не получается сделать так, чтобы при перезагрузке модальное окно оставалось. Помогите пожалуйста.
 const App = () => {
-    const {hasVisitedForgotPassword} = useSelector(state => state.authUser);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {isModalOpen, closeModal} = useModal();
-    const {ingredients} = useSelector((state) => state.ingredients);
+    const {hasVisitedForgotPassword} = useSelector(state => state.authUser);
+    const {ingredients, currentIngredient} = useSelector((state) => state.ingredients);
     const location = useLocation();
     const background = location.state?.background;
+
+    useEffect(() => {
+        dispatch(setIngredients());
+    }, [dispatch]);
+
+
     const closeModalIngredient = () => {
-        closeModal();
         navigate(background ? background.pathname : '/');
     };
 
@@ -57,32 +64,28 @@ const App = () => {
                     </RestrictedRoute>
                 }/>
                 <Route path="/" element={
-                    <ProtectedRouteElement>
-                        <DndProvider backend={HTML5Backend}>
-                            <BurgerIngredients/>
-                            <BurgerConstructor/>
-                        </DndProvider>
-                    </ProtectedRouteElement>
+                    <DndProvider backend={HTML5Backend}>
+                        <BurgerIngredients/>
+                        <BurgerConstructor/>
+                    </DndProvider>
                 }/>
                 <Route path="/profile/*" element={
                     <ProtectedRouteElement>
                         <Profile/>
                     </ProtectedRouteElement>
                 }/>
-
-                <Route
-                    path="/ingredients/:id"
-                    element={<IngredientDetailsPage
-                        ingredient={ingredients.find(ing => ing._id === location.pathname.split("/").pop())}/>}
-                />
+                <Route path="/ingredients/:id" element={<IngredientDetailsPage/>}/>
                 <Route path="*" element={<Page404/>}/>
             </Routes>
-            {background && isModalOpen && (
-                <Modal onClose={closeModalIngredient}>
-                    <IngredientDetails
-                        ingredient={ingredients.find(ing => ing._id === location.pathname.split("/").pop())}
-                    />
-                </Modal>
+
+            {background && currentIngredient && (
+                <Routes>
+                    <Route path="/ingredients/:id" element={
+                        <Modal title="Детали ингредиента" onClose={closeModalIngredient}>
+                            <IngredientDetails/>
+                        </Modal>
+                    } />
+                </Routes>
             )}
         </div>
     );

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { loginUser, setEmailLogin, setPasswordLogin } from './../../services/actions/auth-actions';
+import { loginUser, setEmailLogin, setPasswordLogin } from '../../../services/actions/auth-actions';
 import { Button, Input, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import styles from './login.module.css';
