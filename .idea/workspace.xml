@@ -4,28 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="sprint 3/ step 1 fix">
+    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="sprint 3/ step 1 fix 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/404page/404page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/404page/404page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/404page/404page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/404page/404page.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forgot-password/forgot-password.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/forgot-password/forgot-password.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forgot-password/forgot-password.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/forgot-password/forgot-password.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login/login.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingrdient-detail-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingrdient-detail-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/profile/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/profile/profile.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/registration/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/registration/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/registration/registration.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/registration/registration.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/reset-password/reset-password.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/reset-password/reset-password.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/reset-password/reset-password.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/reset-password/reset-password.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingrdient-detail-page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +217,8 @@
       <workItem from="1727621445247" duration="14739000" />
       <workItem from="1727789450714" duration="13328000" />
       <workItem from="1727978203269" duration="11644000" />
-      <workItem from="1728046735745" duration="4973000" />
+      <workItem from="1728046735745" duration="6854000" />
+      <workItem from="1728138116305" duration="1401000" />
     </task>
     <task id="LOCAL-00001" summary="sprint 1/ step 1">
       <option name="closed" value="true" />
@@ -290,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727800605819</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="sprint 3/ step 1 fix 1">
+      <option name="closed" value="true" />
+      <created>1728051902891</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1728051902891</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +309,8 @@
     <MESSAGE value="sprint 2/ step 1" />
     <MESSAGE value="sprint 2/ step 2 fix" />
     <MESSAGE value="sprint 3/ step 1 fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="sprint 3/ step 1 fix" />
+    <MESSAGE value="sprint 3/ step 1 fix 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprint 3/ step 1 fix 1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

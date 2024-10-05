@@ -1,9 +1,12 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './ingredient-details.module.css';
 import { useSelector } from 'react-redux';
 
 const IngredientDetails = () => {
-    const ingredient = useSelector((state) => state.ingredients.currentIngredient);
+    const { id } = useParams();
+    const ingredients = useSelector((state) => state.ingredients.ingredients);
+    const ingredient = ingredients.find((item) => item._id === id);
 
     if (!ingredient) {
         return <div>Loading...</div>;
