@@ -56,7 +56,6 @@ export const updateUser = (name: string, email: string): ThunkProfileAction => {
                 if (data.success) {
                     dispatch({ type: UPDATE_USER_SUCCESS, payload: { email: data.user.email, name: data.user.name } });
                 } else {
-                    // Check for expired token or 403 status
                     if (data.message === 'jwt expired' || data.status === 403) {
                         return dispatch(refreshToken()).then(() => {
                             return dispatch(updateUser(name, email));
