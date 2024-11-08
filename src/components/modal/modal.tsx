@@ -14,8 +14,8 @@ const Modal: React.FC<IModal> = ({children, onClose, title}) => {
                 onClose();
             }
         };
-        document.addEventListener('keydown', handleClose);
 
+        document.addEventListener('keydown', handleClose);
         return () => {
             document.removeEventListener('keydown', handleClose);
         };
@@ -23,15 +23,19 @@ const Modal: React.FC<IModal> = ({children, onClose, title}) => {
 
     if (!modalRoot) return null;
 
+    const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
     return ReactDOM.createPortal(
         <>
             <ModalOverlay onClose={onClose}/>
-            <div className={styles.modal}>
+            <div className={styles.modal} onClick={handleOverlayClick}>
                 <div className={styles.modalHeader}>
                     <h2 className="text text_type_main-large">{title}</h2>
-                    <div onClick={onClose}>
-                        <CloseIcon type="primary"/>
-                    </div>
+                    <CloseIcon onClick={onClose} type="primary"/>
                 </div>
                 {children}
             </div>
@@ -39,6 +43,5 @@ const Modal: React.FC<IModal> = ({children, onClose, title}) => {
         modalRoot
     );
 };
-
 
 export default Modal;

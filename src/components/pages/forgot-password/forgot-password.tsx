@@ -1,14 +1,12 @@
 import React, {useEffect} from "react";
 import {Button, EmailInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Link, useNavigate} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {forgotPasswordRequest, setEmailForgot} from '../../../services/actions/password-actions';
 import {markForgotPasswordVisited} from '../../../services/actions/auth-actions';
 import styles from './forgot-password.module.css';
 import {RootState} from '../../../services/reducers/root-reducer';
-import {AppDispatch} from '../../../services/store';
-
-const useAppDispatch = () => useDispatch<AppDispatch>();
+import {useAppDispatch} from "../../../services/store";
 
 const ForgotPassword: React.FC = () => {
     const navigate = useNavigate();

@@ -1,154 +1,53 @@
-import {
-    REGISTER_REQUEST,
-    REGISTER_SUCCESS,
-    REGISTER_FAILURE,
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    LOGOUT_REQUEST,
-    LOGOUT_SUCCESS,
-    LOGOUT_FAILURE,
-    TOKEN_REFRESH_REQUEST,
-    TOKEN_REFRESH_SUCCESS,
-    TOKEN_REFRESH_FAILURE,
-    SET_EMAIL_LOGIN,
-    SET_PASSWORD_LOGIN,
-    SET_EMAIL_REGISTER,
-    SET_PASSWORD_REGISTER,
-    SET_NAME_REGISTER,
-    FORGOT_PASSWORD_VISITED,
+export const ActionTypes = {
+    REGISTER_REQUEST: 'REGISTER_REQUEST',
+    REGISTER_SUCCESS: 'REGISTER_SUCCESS',
+    REGISTER_FAILURE: 'REGISTER_FAILURE',
+    LOGIN_REQUEST: 'LOGIN_REQUEST',
+    LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+    LOGIN_FAILURE: 'LOGIN_FAILURE',
+    LOGOUT_REQUEST: 'LOGOUT_REQUEST',
+    LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
+    LOGOUT_FAILURE: 'LOGOUT_FAILURE',
+    TOKEN_REFRESH_REQUEST: 'TOKEN_REFRESH_REQUEST',
+    TOKEN_REFRESH_SUCCESS: 'TOKEN_REFRESH_SUCCESS',
+    TOKEN_REFRESH_FAILURE: 'TOKEN_REFRESH_FAILURE',
+    SET_EMAIL_LOGIN: 'SET_EMAIL_LOGIN',
+    SET_PASSWORD_LOGIN: 'SET_PASSWORD_LOGIN',
+    SET_EMAIL_REGISTER: 'SET_EMAIL_REGISTER',
+    SET_PASSWORD_REGISTER: 'SET_PASSWORD_REGISTER',
+    SET_NAME_REGISTER: 'SET_NAME_REGISTER',
+    GET_USER_REQUEST: 'GET_USER_REQUEST',
+    GET_USER_SUCCESS: 'GET_USER_SUCCESS',
+    GET_USER_FAILURE: 'GET_USER_FAILURE',
+    UPDATE_USER_REQUEST: 'UPDATE_USER_REQUEST',
+    UPDATE_USER_SUCCESS: 'UPDATE_USER_SUCCESS',
+    UPDATE_USER_FAILURE: 'UPDATE_USER_FAILURE',
+    FORGOT_PASSWORD_VISITED: 'FORGOT_PASSWORD_VISITED',
+} as const;
 
-} from './../actions/action-types';
+export type ActionTypes = typeof ActionTypes[keyof typeof ActionTypes];
 
-interface ISetEmailRegisterAction {
-    type: typeof SET_EMAIL_REGISTER;
-    payload: string;
-}
-
-interface ISetPasswordRegisterAction {
-    type: typeof SET_PASSWORD_REGISTER;
-    payload: string;
-}
-
-interface ISetNameRegisterAction {
-    type: typeof SET_NAME_REGISTER;
-    payload: string;
-}
-
-interface ISetEmailLoginAction {
-    type: typeof SET_EMAIL_LOGIN;
-    payload: string;
-}
-
-interface ISetPasswordLoginAction {
-    type: typeof SET_PASSWORD_LOGIN;
-    payload: string;
-}
-
-interface IRegisterRequestAction {
-    type: typeof REGISTER_REQUEST;
-}
-
-interface IRegisterSuccessAction {
-    type: typeof REGISTER_SUCCESS;
-    payload: {
-        user: any;
-        accessToken: string;
-        refreshToken: string;
-    };
-}
-
-interface IRegisterFailureAction {
-    type: typeof REGISTER_FAILURE;
-    payload: string;
-}
-
-interface ILoginRequestAction {
-    type: typeof LOGIN_REQUEST;
-}
-
-interface ILoginSuccessAction {
-    type: typeof LOGIN_SUCCESS;
-    payload: {
-        user: any;
-        accessToken: string;
-        refreshToken: string;
-    };
-}
-
-interface ILoginFailureAction {
-    type: typeof LOGIN_FAILURE;
-    payload: string;
-}
-
-interface ILogoutRequestAction {
-    type: typeof LOGOUT_REQUEST;
-}
-
-interface ILogoutSuccessAction {
-    type: typeof LOGOUT_SUCCESS;
-}
-
-interface ILogoutFailureAction {
-    type: typeof LOGOUT_FAILURE;
-    payload: string;
-}
-
-interface ITokenRefreshRequestAction {
-    type: typeof TOKEN_REFRESH_REQUEST;
-}
-
-interface ITokenRefreshSuccessAction {
-    type: typeof TOKEN_REFRESH_SUCCESS;
-    payload: {
-        accessToken: string;
-        refreshToken: string;
-    };
-}
-
-interface ITokenRefreshFailureAction {
-    type: typeof TOKEN_REFRESH_FAILURE;
-    payload: string;
-}
-
-interface IForgotPasswordVisitedAction {
-    type: typeof FORGOT_PASSWORD_VISITED;
+interface IAction<T extends ActionTypes, P = void> {
+    type: T;
+    payload?: P;
 }
 
 export type TAuthActionTypes =
-    | ISetEmailRegisterAction
-    | ISetPasswordRegisterAction
-    | ISetNameRegisterAction
-    | ISetEmailLoginAction
-    | ISetPasswordLoginAction
-    | IRegisterRequestAction
-    | IRegisterSuccessAction
-    | IRegisterFailureAction
-    | ILoginRequestAction
-    | ILoginSuccessAction
-    | ILoginFailureAction
-    | ILogoutRequestAction
-    | ILogoutSuccessAction
-    | ILogoutFailureAction
-    | ITokenRefreshRequestAction
-    | ITokenRefreshSuccessAction
-    | ITokenRefreshFailureAction
-    | IForgotPasswordVisitedAction;
-
-export interface IAuthState {
-    isAuth: boolean;
-    user: any;
-    accessToken: string | null;
-    refreshToken: string | null;
-    error: string | null;
-    successRegister: boolean;
-    successLogin: boolean;
-    successLogout: boolean;
-    successToken: boolean;
-    emailLogin: string;
-    passwordLogin: string;
-    emailRegister: string;
-    passwordRegister: string;
-    nameRegister: string;
-    hasVisitedForgotPassword: boolean;
-};
+    | IAction<typeof ActionTypes.SET_EMAIL_REGISTER, string>
+    | IAction<typeof ActionTypes.SET_PASSWORD_REGISTER, string>
+    | IAction<typeof ActionTypes.SET_NAME_REGISTER, string>
+    | IAction<typeof ActionTypes.SET_EMAIL_LOGIN, string>
+    | IAction<typeof ActionTypes.SET_PASSWORD_LOGIN, string>
+    | IAction<typeof ActionTypes.REGISTER_REQUEST>
+    | IAction<typeof ActionTypes.REGISTER_SUCCESS, { user: any; accessToken: string; refreshToken: string }>
+    | IAction<typeof ActionTypes.REGISTER_FAILURE, string>
+    | IAction<typeof ActionTypes.LOGIN_REQUEST>
+    | IAction<typeof ActionTypes.LOGIN_SUCCESS, { user: any; accessToken: string; refreshToken: string }>
+    | IAction<typeof ActionTypes.LOGIN_FAILURE, string>
+    | IAction<typeof ActionTypes.LOGOUT_REQUEST>
+    | IAction<typeof ActionTypes.LOGOUT_SUCCESS>
+    | IAction<typeof ActionTypes.LOGOUT_FAILURE, string>
+    | IAction<typeof ActionTypes.TOKEN_REFRESH_REQUEST>
+    | IAction<typeof ActionTypes.TOKEN_REFRESH_SUCCESS, { accessToken: string; refreshToken: string }>
+    | IAction<typeof ActionTypes.TOKEN_REFRESH_FAILURE, string>
+    | IAction<typeof ActionTypes.FORGOT_PASSWORD_VISITED>;

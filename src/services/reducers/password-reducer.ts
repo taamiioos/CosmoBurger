@@ -1,15 +1,13 @@
-import {
-    FORGOT_PASSWORD_REQUEST,
-    FORGOT_PASSWORD_SUCCESS,
-    FORGOT_PASSWORD_ERROR,
-    RESET_PASSWORD_REQUEST,
-    RESET_PASSWORD_SUCCESS,
-    RESET_PASSWORD_ERROR,
-    SET_EMAIL_FORGOT,
-    SET_PASSWORD_RESET,
-    SET_CODE_RESET
-} from '../actions/action-types';
-import {TPasswordActionTypes, IPasswordState} from "../types/password-types";
+import {TPasswordActionTypes, ActionTypes} from "../types/password-types";
+
+export interface IPasswordState {
+    email: string;
+    password: string;
+    code: string;
+    error: any;
+    successForgot: boolean;
+    successReset: boolean;
+}
 
 const initialState: IPasswordState = {
     email: '',
@@ -22,54 +20,54 @@ const initialState: IPasswordState = {
 
 export const passwordReducer = (state = initialState, action: TPasswordActionTypes): IPasswordState => {
     switch (action.type) {
-        case FORGOT_PASSWORD_REQUEST:
+        case ActionTypes.FORGOT_PASSWORD_REQUEST:
             return {
                 ...state,
                 error: null,
                 successForgot: false
             };
-        case FORGOT_PASSWORD_SUCCESS:
+        case ActionTypes.FORGOT_PASSWORD_SUCCESS:
             return {
                 ...state,
                 successForgot: true
             };
-        case FORGOT_PASSWORD_ERROR:
+        case ActionTypes.FORGOT_PASSWORD_ERROR:
             return {
                 ...state,
                 error: action.payload,
                 successForgot: false
             };
-        case SET_EMAIL_FORGOT:
+        case ActionTypes.SET_EMAIL_FORGOT:
             return {
                 ...state,
-                email: action.payload
+                email: action.payload || ""
             };
-        case RESET_PASSWORD_REQUEST:
+        case ActionTypes.RESET_PASSWORD_REQUEST:
             return {
                 ...state,
                 error: null,
                 successReset: false
             };
-        case RESET_PASSWORD_SUCCESS:
+        case ActionTypes.RESET_PASSWORD_SUCCESS:
             return {
                 ...state,
                 successReset: true
             };
-        case RESET_PASSWORD_ERROR:
+        case ActionTypes.RESET_PASSWORD_ERROR:
             return {
                 ...state,
                 error: action.payload,
                 successReset: false
             };
-        case SET_PASSWORD_RESET:
+        case ActionTypes.SET_PASSWORD_RESET:
             return {
                 ...state,
-                password: action.payload
+                password: action.payload || ""
             };
-        case SET_CODE_RESET:
+        case ActionTypes.SET_CODE_RESET:
             return {
                 ...state,
-                code: action.payload
+                code: action.payload || ""
             };
         default:
             return state;

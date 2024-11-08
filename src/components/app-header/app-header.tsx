@@ -1,18 +1,14 @@
 import styles from './app-header.module.css';
 import {Logo, BurgerIcon, ProfileIcon, ListIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {NavLink, useLocation} from 'react-router-dom';
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 const AppHeader: React.FC = () => {
-    const [color, setColor] = React.useState<boolean>(false);
+    const [activeLink, setActiveLink] = useState<string>('');
     const location = useLocation();
 
     useEffect(() => {
-        if (location.pathname === '/profile') {
-            setColor(true);
-        } else {
-            setColor(false);
-        }
+        setActiveLink(location.pathname);
     }, [location]);
 
     return (
@@ -21,19 +17,28 @@ const AppHeader: React.FC = () => {
                 <nav>
                     <ul className={styles.ul1}>
                         <li>
-                            <BurgerIcon type={color ? "primary" : "secondary"}/>
+                            <BurgerIcon type={activeLink === '/' ? "secondary" : "primary"}/>
                             <NavLink
                                 to={'/'}
                                 className={({isActive}) =>
                                     isActive ? `${styles.link} text text_type_main-default text_color_inactive pl-2` : `${styles.link} text text_type_main-default pl-1`
                                 }
+                                onClick={() => setActiveLink('/')}
                             >
                                 Конструктор
                             </NavLink>
                         </li>
                         <li>
-                            <ListIcon type="primary"/>
-                            <span className='text text_type_main-default pl-1'>Лента заказов</span>
+                            <ListIcon type={activeLink === '/feed' ? "secondary" : "primary"}/>
+                            <NavLink
+                                to={'/feed'}
+                                className={({isActive}) =>
+                                    isActive ? `${styles.link} text text_type_main-default text_color_inactive pl-2` : `${styles.link} text text_type_main-default pl-1`
+                                }
+                                onClick={() => setActiveLink('/feed')}
+                            >
+                                Лента заказов
+                            </NavLink>
                         </li>
                     </ul>
                     <NavLink to={'/'}
@@ -42,12 +47,13 @@ const AppHeader: React.FC = () => {
                     </NavLink>
                     <ul className={styles.ul2}>
                         <li className={styles.profile}>
-                            <ProfileIcon type={color ? "secondary" : "primary"}/>
+                            <ProfileIcon type={activeLink === '/profile' ? "secondary" : "primary"}/>
                             <NavLink
                                 to={'/profile'}
                                 className={({isActive}) =>
                                     isActive ? `${styles.link} text text_type_main-default text_color_inactive pl-2` : `${styles.link} text text_type_main-default pl-1`
                                 }
+                                onClick={() => setActiveLink('/profile')}
                             >
                                 Личный кабинет
                             </NavLink>

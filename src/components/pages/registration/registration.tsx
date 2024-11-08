@@ -8,13 +8,11 @@ import {
 import {Button, Input, PasswordInput, EmailInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Link} from 'react-router-dom';
 import styles from './registration.module.css';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {RootState} from '../../../services/reducers/root-reducer';
-import {AppDispatch} from '../../../services/store';
+import {useAppDispatch} from '../../../services/store';
 
-const useAppDispatch = () => useDispatch<AppDispatch>();
-
-const Registration: React.FC  = () => {
+const Registration: React.FC = () => {
     const dispatch = useAppDispatch();
     const {
         emailRegister,

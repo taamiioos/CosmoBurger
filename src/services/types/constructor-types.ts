@@ -1,59 +1,26 @@
-import {
-    ADD_INGREDIENT,
-    REMOVE_INGREDIENT,
-    REPLACE_BUN,
-    SET_PRICE,
-    MOVE_INGREDIENT,
-    CLEAR_CONSTRUCTOR
-} from '../actions/action-types';
-
 import {IIngredient} from './../../components/types/components-types';
 
-interface IAddIngredientAction {
-    type: typeof ADD_INGREDIENT;
-    payload: {
-        item: IIngredient & { uniqueId: string };
-    };
-}
+export const ActionTypes = {
+    ADD_INGREDIENT: 'ADD_INGREDIENT',
+    REMOVE_INGREDIENT: 'REMOVE_INGREDIENT',
+    REPLACE_BUN: 'REPLACE_BUN',
+    SET_PRICE: 'SET_PRICE',
+    MOVE_INGREDIENT: 'MOVE_INGREDIENT',
+    CLEAR_CONSTRUCTOR: 'CLEAR_CONSTRUCTOR',
+} as const;
 
-interface IRemoveIngredientAction {
-    type: typeof REMOVE_INGREDIENT;
-    payload: number; 
-}
+export type ActionTypes = typeof ActionTypes[keyof typeof ActionTypes];
 
-interface IReplaceBunAction {
-    type: typeof REPLACE_BUN;
-    payload: IIngredient; 
-}
-
-interface ISetPriceAction {
-    type: typeof SET_PRICE;
-    payload: number; 
-}
-
-interface IMoveIngredientAction {
-    type: typeof MOVE_INGREDIENT;
-    payload: {
-        dragIndex: number;
-        hoverIndex: number; 
-    };
-}
-
-interface IClearConstructorAction {
-    type: typeof CLEAR_CONSTRUCTOR;
+interface IAction<T extends ActionTypes, P = void> {
+    type: T;
+    payload?: P;
 }
 
 export type TConstructorActionTypes =
-    | IAddIngredientAction
-    | IRemoveIngredientAction
-    | IReplaceBunAction
-    | ISetPriceAction
-    | IMoveIngredientAction
-    | IClearConstructorAction;
+    | IAction<typeof ActionTypes.ADD_INGREDIENT, { item: IIngredient & { uniqueId: string } }>
+    | IAction<typeof ActionTypes.REMOVE_INGREDIENT, number>
+    | IAction<typeof ActionTypes.REPLACE_BUN, IIngredient>
+    | IAction<typeof ActionTypes.SET_PRICE, number>
+    | IAction<typeof ActionTypes.MOVE_INGREDIENT, { dragIndex: number; hoverIndex: number }>
+    | IAction<typeof ActionTypes.CLEAR_CONSTRUCTOR>;
 
-export interface IConstructorState {
-    bun: IIngredient | null;
-    ingredients: IIngredient[]; 
-    price: number; 
-    count?: number; 
-}

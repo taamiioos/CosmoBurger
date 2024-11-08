@@ -1,29 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./profile.module.css";
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, Input, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { getUser, updateUser } from '../../../services/actions/profile-actions';
-import { logoutUser } from '../../../services/actions/auth-actions';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { RootState } from '../../../services/reducers/root-reducer';
-import { AppDispatch } from '../../../services/store';
-
-const useAppDispatch = () => useDispatch<AppDispatch>();
+import {useSelector} from 'react-redux';
+import {Button, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
+import {getUser, updateUser} from '../../../services/actions/profile-actions';
+import {logoutUser} from '../../../services/actions/auth-actions';
+import {Link, useNavigate, useLocation, NavLink} from 'react-router-dom';
+import {RootState} from '../../../services/reducers/root-reducer';
+import OrderHistory from "../../order-history/order-history";
+import {useAppDispatch} from "../../../services/store";
 
 const Profile: React.FC = () => {
     const dispatch = useAppDispatch();
-    const { email, name, successGet } = useSelector((state: RootState) => state.profile);
-    const { successLogout, isAuth } = useSelector((state: RootState) => state.authUser);
+    const {email, name, successGet} = useSelector((state: RootState) => state.profile);
+    const {successLogout, isAuth} = useSelector((state: RootState) => state.authUser);
     const [localName, setLocalName] = useState<string>('');
     const [localEmail, setLocalEmail] = useState<string>('');
     const [isEditingName, setIsEditingName] = useState<boolean>(false);
     const [isEditingEmail, setIsEditingEmail] = useState<boolean>(false);
     const navigate = useNavigate();
     const location = useLocation();
-
-    const handleExit = () => {
-        dispatch(logoutUser());
-    };
 
     useEffect(() => {
         if (successLogout) {
@@ -48,6 +43,10 @@ const Profile: React.FC = () => {
         }
     }, [email, name, successGet]);
 
+    const handleExit = () => {
+        dispatch(logoutUser());
+    };
+
     const handleSave = () => {
         dispatch(updateUser(localName, localEmail));
         setIsEditingName(false);
@@ -62,7 +61,7 @@ const Profile: React.FC = () => {
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         if (name === 'name') {
             setLocalName(value);
         } else if (name === 'email') {
@@ -75,11 +74,18 @@ const Profile: React.FC = () => {
             <section className={styles.container}>
                 <div className={styles.menu}>
                     <Link to={'/profile'} className={`${styles.menuElement} text text_type_main-medium`}>Профиль</Link>
-                    <Link to={'/profile/orders'} className={`${styles.menuElement} text text_type_main-medium`}>История
-                        заказов</Link>
+                    <NavLink
+                        to={'/profile/orders'}
+                        className={({isActive}) =>
+                            isActive ? `${styles.menuElement} text text_type_main-medium` : `${styles.menuElement} text text_type_main-medium`
+                        }
+                    >
+                        История заказов
+                    </NavLink>
                     <Link to={'/'} onClick={handleExit}
                           className={`${styles.menuElement} text text_type_main-medium`}>Выход</Link>
                 </div>
+
                 {location.pathname === '/profile' && (
                     <div className={styles.inputs}>
                         <Input
@@ -92,7 +98,6 @@ const Profile: React.FC = () => {
                             onBlur={() => setIsEditingName(false)}
                             disabled={!isEditingName}
                             onChange={handleInputChange}
-
                         />
                         <Input
                             value={localEmail || ''}
@@ -110,16 +115,19 @@ const Profile: React.FC = () => {
                             name={'password'}
                             errorText={'Ошибка'}
                             disabled={true}
-                            onChange={() => {}}
+                            onChange={() => {
+                            }}
                         />
                     </div>
                 )}
+
                 {location.pathname === '/profile/orders' && (
                     <div className={styles.orders}>
-                        <h2 className="text text_type_main-medium">История заказов</h2>
+                        <OrderHistory/>
                     </div>
                 )}
             </section>
+
             {location.pathname === '/profile' && (
                 <>
                     <div className={styles.buttons}>

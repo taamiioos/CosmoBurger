@@ -1,0 +1,26 @@
+.orderList {
+    display: flex;
+    flex-direction: column;
+    margin-top: 148px;
+    margin-left: 20px;
+    width: 900px;
+}
+.scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 916px;
+    overflow-y: auto;
+    scrollbar-color: rgba(133, 133, 173, 1) transparent;
+}
+.loaderOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}

@@ -1,17 +1,15 @@
-import React, { useEffect } from "react";
-import { loginUser, setEmailLogin, setPasswordLogin } from '../../../services/actions/auth-actions';
-import { Button, EmailInput, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {useEffect} from "react";
+import {loginUser, setEmailLogin, setPasswordLogin} from '../../../services/actions/auth-actions';
+import {Button, EmailInput, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Link, useNavigate} from 'react-router-dom';
 import styles from './login.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../services/reducers/root-reducer';
-import { AppDispatch } from '../../../services/store';
-
-const useAppDispatch = () => useDispatch<AppDispatch>();
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../services/reducers/root-reducer';
+import {useAppDispatch} from "../../../services/store";
 
 const Login: React.FC = () => {
     const dispatch = useAppDispatch();
-    const { emailLogin, passwordLogin, isAuth, error } = useSelector((state: RootState) => state.authUser);
+    const {emailLogin, passwordLogin, isAuth, error} = useSelector((state: RootState) => state.authUser);
     const navigate = useNavigate();
     const [errorP, setErrorP] = React.useState<string>("");
     useEffect(() => {
@@ -31,7 +29,7 @@ const Login: React.FC = () => {
 
     useEffect(() => {
         if (isAuth) {
-            navigate("/login", { replace: true });
+            navigate("/login", {replace: true});
         }
     }, [isAuth, navigate]);
 

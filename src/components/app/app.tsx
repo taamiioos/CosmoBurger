@@ -13,29 +13,56 @@ import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {ProtectedRouteElement} from '../protected-element/protected-route-element';
 import {RestrictedRoute} from '../protected-element/restricted-route';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import IngredientDetails from '../modal/ingredient-details/ingredient-details';
 import Page404 from '../pages/404page/404page';
 import {Navigate} from 'react-router-dom';
 import Modal from '../modal/modal';
 import {setIngredients} from '../../services/actions/ingredients-actions';
 import {RootState} from '../../services/reducers/root-reducer';
-import { AppDispatch } from '../../services/store'; 
-const useAppDispatch = () => useDispatch<AppDispatch>();
+import Feed from "../pages/feed/feed";
+import {connect, disconnect} from './../../services/actions/ws-actions';
+import OrdersInfo from "../modal/orders-info/orders-info";
+import {useModal} from "../../hooks/use-modal";
+import {useAppDispatch} from "../../services/store";
 
 const App: React.FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {hasVisitedForgotPassword} = useSelector((state: RootState) => state.authUser);
     const location = useLocation();
+    const {isModalOpen, openModal, closeModal} = useModal();
     const background = location.state?.background;
+    const isConnected = useSelector((state: RootState) => state.ws.isConnected);
+
+    useEffect(() => {
+        if (!isConnected) {
+            dispatch(connect());
+        }
+        return () => {
+            if (isConnected) {
+                dispatch(disconnect());
+            }
+        };
+    }, [dispatch, isConnected]);
 
     useEffect(() => {
         dispatch(setIngredients());
     }, [dispatch]);
 
     const closeModalIngredient = () => {
+        closeModal();
         navigate(background ? background.pathname : '/');
+    };
+
+    const closeModalFeed = () => {
+        closeModal();
+        navigate(background ? background.pathname : '/feed');
+    };
+
+    const closeModalFeedProfile = () => {
+        closeModal();
+        navigate(background ? background.pathname : '/profile/orders');
     };
 
     return (
@@ -62,6 +89,7 @@ const App: React.FC = () => {
                         {hasVisitedForgotPassword ? <ResetPassword/> : <Navigate to="/forgot-password" replace/>}
                     </RestrictedRoute>
                 }/>
+                <Route path="/feed" element={<Feed/>}/>
                 <Route path="/" element={
                     <DndProvider backend={HTML5Backend}>
                         <BurgerIngredients/>
@@ -73,12 +101,22 @@ const App: React.FC = () => {
                         <Profile/>
                     </ProtectedRouteElement>
                 }/>
-                    <Route path="/ingredients/:id" element={
-                        <div className={styles.pageStyle}>
-                            <IngredientDetails/>
-                        </div>
-                    }/>
-                        <Route path="*" element={<Page404/>}/>
+                <Route path="/ingredients/:id" element={
+                    <div className={styles.pageStyle}>
+                        <IngredientDetails/>
+                    </div>
+                }/>
+                <Route path="/feed/:id" element={
+                    <div className={styles.pageStyle}>
+                        <OrdersInfo/>
+                    </div>
+                }/>
+                <Route path="/profile/orders/:id" element={
+                    <div className={styles.pageStyle}>
+                        <OrdersInfo/>
+                    </div>
+                }/>
+                <Route path="*" element={<Page404/>}/>
             </Routes>
 
             {background && (
@@ -86,6 +124,16 @@ const App: React.FC = () => {
                     <Route path="/ingredients/:id" element={
                         <Modal title="Детали ингредиента" onClose={closeModalIngredient}>
                             <IngredientDetails/>
+                        </Modal>
+                    }/>
+                    <Route path="/feed/:id" element={
+                        <Modal title="" onClose={closeModalFeed}>
+                            <OrdersInfo/>
+                        </Modal>
+                    }/>
+                    <Route path="/profile/orders/:id" element={
+                        <Modal title="" onClose={closeModalFeedProfile}>
+                            <OrdersInfo/>
                         </Modal>
                     }/>
                 </Routes>

@@ -4,12 +4,10 @@ import {
     Button, Input, PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import {Link, useNavigate} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {resetPasswordRequest, setPasswordReset, setCodeReset} from '../../../services/actions/password-actions';
 import {RootState} from '../../../services/reducers/root-reducer';
-import {AppDispatch} from '../../../services/store';
-
-const useAppDispatch = () => useDispatch<AppDispatch>();
+import {useAppDispatch} from '../../../services/store';
 
 const ResetPassword: React.FC = () => {
     const navigate = useNavigate();

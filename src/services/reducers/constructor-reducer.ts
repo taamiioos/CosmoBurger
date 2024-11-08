@@ -1,13 +1,12 @@
-import {
-    ADD_INGREDIENT,
-    REMOVE_INGREDIENT,
-    REPLACE_BUN,
-    SET_PRICE,
-    MOVE_INGREDIENT,
-    CLEAR_CONSTRUCTOR
-} from '../actions/action-types';
+import {IIngredient} from './../../components/types/components-types';
+import {TConstructorActionTypes, ActionTypes} from "../types/constructor-types";
 
-import {TConstructorActionTypes, IConstructorState} from "../types/constructor-types";
+export interface IConstructorState {
+    bun: IIngredient | null;
+    ingredients: IIngredient[];
+    price: number;
+    count?: number;
+}
 
 const initialState: IConstructorState = {
     bun: null,
@@ -17,28 +16,31 @@ const initialState: IConstructorState = {
 
 const constructorReducer = (state = initialState, action: TConstructorActionTypes): IConstructorState => {
     switch (action.type) {
-        case ADD_INGREDIENT: {
+        case ActionTypes.ADD_INGREDIENT: {
+            if (!action.payload) {
+                return state;
+            }
             return {
                 ...state,
                 ingredients: [...state.ingredients, {...action.payload.item, count: 1}],
             };
         }
-        case REMOVE_INGREDIENT:
+        case ActionTypes.REMOVE_INGREDIENT:
             return {
                 ...state,
                 ingredients: state.ingredients.filter((_, index) => index !== action.payload),
             };
-        case REPLACE_BUN:
+        case ActionTypes.REPLACE_BUN:
             return {
                 ...state,
-                bun: action.payload,
+                bun: action.payload || null,
             };
-        case SET_PRICE:
+        case ActionTypes.SET_PRICE:
             return {
                 ...state,
-                price: action.payload,
+                price: action.payload || 0,
             };
-        case CLEAR_CONSTRUCTOR: {
+        case ActionTypes.CLEAR_CONSTRUCTOR: {
             return {
                 ...state,
                 bun: null,
@@ -46,8 +48,8 @@ const constructorReducer = (state = initialState, action: TConstructorActionType
                 price: 0
             };
         }
-        case MOVE_INGREDIENT: {
-            const {dragIndex, hoverIndex} = action.payload;
+        case ActionTypes.MOVE_INGREDIENT: {
+            const {dragIndex, hoverIndex} = action.payload ?? {dragIndex: 0, hoverIndex: 0};
             const newIngredients = [...state.ingredients];
             const [movedItem] = newIngredients.splice(dragIndex, 1);
             newIngredients.splice(hoverIndex, 0, movedItem);

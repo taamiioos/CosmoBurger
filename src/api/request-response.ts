@@ -1,4 +1,7 @@
-import { BASE_URL } from '../api/api-config';
+import {BASE_URL} from '../api/api-config';
+import {refreshToken} from '../services/actions/auth-actions';
+import {setCurrentOrder} from '../services/actions/ws-actions';
+import {AppDispatch} from '../services/store';
 
 export async function checkResponse(res: Response): Promise<any> {
     if (res.ok) {
@@ -8,5 +11,34 @@ export async function checkResponse(res: Response): Promise<any> {
 }
 
 export async function request(endpoint: string, options?: RequestInit): Promise<any> {
-    return fetch(`${BASE_URL}${endpoint}`, options).then(checkResponse);
+    const response = await fetch(`${BASE_URL}${endpoint}`, options);
+    return checkResponse(response);
 }
+
+export const fetchOrderDetails = (id: string) => {
+    return (dispatch: AppDispatch) => {
+        return request(`/orders/${id}`, {
+            method: 'GET',
+        })
+            .then((data) => {
+                if (data.success && data.orders && data.orders.length > 0) {
+                    const order = data.orders[0];
+                    dispatch(setCurrentOrder(order));
+                } else {
+                    throw new Error('Заказ не найден');
+                }
+            })
+            .catch((error) => {
+                if ((error as Error).message === 'jwt expired') {
+                    return dispatch(refreshToken())
+                        .then(() => {
+                            return dispatch(fetchOrderDetails(id));
+                        })
+                        .catch((refreshError) => {
+                        });
+                } else {
+                    console.error('Неизвестная ошибка при получении заказа:', error);
+                }
+            });
+    };
+};
