@@ -1,10 +1,9 @@
 import {IIngredient} from './../../components/types/components-types';
-import {ThunkAction} from 'redux-thunk';
-import {RootState} from '../reducers/root-reducer';
 import {request} from '../../api/request-response';
 import {TIngredientsActionTypes, ActionTypes} from './../types/ingredients-types';
+import {AppThunk} from '../store';
 
-export const setIngredients = (): ThunkAction<Promise<void>, RootState, unknown, TIngredientsActionTypes> => {
+export const setIngredients = (): AppThunk => {
     return async (dispatch) => {
         dispatch({type: ActionTypes.INGREDIENTS_REQUEST});
         try {

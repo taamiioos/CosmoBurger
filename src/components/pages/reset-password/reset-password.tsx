@@ -4,15 +4,13 @@ import {
     Button, Input, PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import {Link, useNavigate} from 'react-router-dom';
-import {useSelector} from 'react-redux';
 import {resetPasswordRequest, setPasswordReset, setCodeReset} from '../../../services/actions/password-actions';
-import {RootState} from '../../../services/reducers/root-reducer';
-import {useAppDispatch} from '../../../services/store';
+import {useDispatch, useSelector} from '../../../services/store';
 
 const ResetPassword: React.FC = () => {
     const navigate = useNavigate();
-    const dispatch = useAppDispatch();
-    const {code, password, successReset} = useSelector((state: RootState) => state.passwordForgot);
+    const dispatch = useDispatch();
+    const {code, password, successReset} = useSelector(state => state.passwordForgot);
 
     const submitForm = async (e: React.FormEvent) => {
         e.preventDefault();

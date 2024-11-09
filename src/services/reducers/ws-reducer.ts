@@ -34,8 +34,9 @@ const wsReducer = (state = initialState, action: any): IOrdersState => {
         case ActionTypes.UPDATE_ORDERS:
             return {
                 ...state,
-                orders: [...state.orders, ...action.payload], 
+                orders: action.payload,
             };
+
         case ActionTypes.WS_CONNECT:
             return {...state, isConnected: true, loading: true};
         case ActionTypes.WS_DISCONNECT:

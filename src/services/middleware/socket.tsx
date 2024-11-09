@@ -1,7 +1,7 @@
 import {Middleware, MiddlewareAPI} from 'redux';
 import {RootState} from '../../services/reducers/root-reducer';
 import {AppDispatch} from '../store';
-import {setOrders, updateOrders} from '../actions/ws-actions';
+import {setOrders} from '../actions/ws-actions';
 import {ActionTypes} from '../types/ws-types';
 
 let socket: WebSocket | null = null;
@@ -14,15 +14,16 @@ export const wsMiddleware: Middleware<unknown, RootState, AppDispatch> =
         const connectSocket = () => {
             const wsUrl = getState().ws.wsUrl;
             if (!socket || socket.readyState === WebSocket.CLOSED) {
-                console.log('Подключение к WebSocket...');
-                socket = new WebSocket(wsUrl);
-                socket.onopen = () => handleSocketOpen();
-                socket.onerror = (event) => handleSocketError(event);
-                socket.onmessage = (event) => handleSocketMessage(event);
-                socket.onclose = (event) => handleSocketClose(event);
+                if (!getState().ws.isConnected) {
+                    console.log('Подключение к WebSocket...');
+                    socket = new WebSocket(wsUrl);
+                    socket.onopen = () => handleSocketOpen();
+                    socket.onerror = (event) => handleSocketError(event);
+                    socket.onmessage = (event) => handleSocketMessage(event);
+                    socket.onclose = (event) => handleSocketClose(event);
+                }
             }
         };
-
         const handleSocketOpen = () => {
             console.log('Подключение к WebSocket успешно установлено.');
             isReconnect = false;
@@ -36,8 +37,6 @@ export const wsMiddleware: Middleware<unknown, RootState, AppDispatch> =
             try {
                 const data = JSON.parse(event.data);
                 if (data.success) {
-                    console.log('Получены новые данные: заказы обновлены.');
-                    dispatch(updateOrders(data.orders));
                     dispatch(setOrders({
                         orders: data.orders,
                         total: data.total,
@@ -48,6 +47,7 @@ export const wsMiddleware: Middleware<unknown, RootState, AppDispatch> =
                 console.error('Ошибка при разборе данных WebSocket:', error);
             }
         };
+
 
         const handleSocketClose = (event: CloseEvent) => {
             console.log('WebSocket закрыт.', event);

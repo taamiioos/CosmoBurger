@@ -1,7 +1,6 @@
 import {BASE_URL} from '../api/api-config';
 import {refreshToken} from '../services/actions/auth-actions';
 import {setCurrentOrder} from '../services/actions/ws-actions';
-import {AppDispatch} from '../services/store';
 
 export async function checkResponse(res: Response): Promise<any> {
     if (res.ok) {
@@ -16,7 +15,7 @@ export async function request(endpoint: string, options?: RequestInit): Promise<
 }
 
 export const fetchOrderDetails = (id: string) => {
-    return (dispatch: AppDispatch) => {
+    return (dispatch) => {
         return request(`/orders/${id}`, {
             method: 'GET',
         })
@@ -34,8 +33,6 @@ export const fetchOrderDetails = (id: string) => {
                         .then(() => {
                             return dispatch(fetchOrderDetails(id));
                         })
-                        .catch((refreshError) => {
-                        });
                 } else {
                     console.error('Неизвестная ошибка при получении заказа:', error);
                 }

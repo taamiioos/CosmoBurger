@@ -5,7 +5,6 @@ import OrderDetails from '../modal/order-details/order-details';
 import {useModal} from '../../hooks/use-modal';
 import Modal from '../modal/modal';
 import {useDrop} from 'react-dnd';
-import {useSelector} from 'react-redux';
 import {
     addIngredient,
     removeIngredient,
@@ -19,17 +18,16 @@ import {decrementIngredientCount, incrementIngredientCount} from '../../services
 import DraggableIngredient from './draggable-ingredient';
 import {ClipLoader} from 'react-spinners';
 import {useNavigate} from 'react-router-dom';
-import {RootState} from '../../services/reducers/root-reducer';
 import {IIngredient} from './../types/components-types';
-import {useAppDispatch} from "../../services/store";
+import {useDispatch, useSelector} from "../../services/store";
 
 const BurgerConstructor: React.FC = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {bun, ingredients, price} = useSelector((state: RootState) => state.constructorIngredients);
+    const {bun, ingredients, price} = useSelector(state => state.constructorIngredients);
     const {isModalOpen, openModal, closeModal} = useModal();
-    const {orderNumber, orderRequest, orderFailed} = useSelector((state: RootState) => state.order);
-    const {isAuth} = useSelector((state: RootState) => state.authUser);
+    const {orderNumber, orderRequest, orderFailed} = useSelector(state => state.order);
+    const {isAuth} = useSelector(state => state.authUser);
 
     const handleOrder = async () => {
         if (!isAuth) {
@@ -43,7 +41,7 @@ const BurgerConstructor: React.FC = () => {
         }
         ingredientIds.push(...ingredients.map(ingredient => ingredient._id));
         try {
-            await dispatch(makeOrder(ingredientIds));
+            dispatch(makeOrder(ingredientIds));
             dispatch(clearConstructor());
         } catch (error) {
             console.error(error);

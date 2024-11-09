@@ -1,9 +1,8 @@
-import {TOrderActionTypes, ActionTypes} from './../types/order-types';
-import {ThunkAction} from 'redux-thunk';
-import {RootState} from './../reducers/root-reducer';
+import {ActionTypes} from './../types/order-types';
 import {request} from '../../api/request-response';
+import {AppThunk} from '../store';
 
-export const makeOrder = (ingredients: string[]): ThunkAction<Promise<void>, RootState, unknown, TOrderActionTypes> => {
+export const makeOrder = (ingredients: string[]): AppThunk => {
     return async (dispatch) => {
         dispatch({type: ActionTypes.ORDER_REQUEST});
         try {

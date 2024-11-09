@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from './order-details.module.css';
 import img from '../../../images/img.png'
-import {useSelector} from 'react-redux';
-import {RootState} from '../../../services/reducers/root-reducer';
+import {useSelector} from '../../../services/store';
 
 const OrderDetails: React.FC = () => {
-    const orderNumber = useSelector((state: RootState) => state.order.orderNumber)
+    const orderNumber = useSelector(state => state.order.orderNumber)
     return (
         <div className={styles.modalContent}>
             <span className={`${styles.numOrderStyle} text text_type_digits-large`}>{orderNumber}</span>

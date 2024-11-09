@@ -1,18 +1,16 @@
 import React, {useState, useEffect} from "react";
 import styles from "./profile.module.css";
-import {useSelector} from 'react-redux';
 import {Button, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {getUser, updateUser} from '../../../services/actions/profile-actions';
 import {logoutUser} from '../../../services/actions/auth-actions';
 import {Link, useNavigate, useLocation, NavLink} from 'react-router-dom';
-import {RootState} from '../../../services/reducers/root-reducer';
 import OrderHistory from "../../order-history/order-history";
-import {useAppDispatch} from "../../../services/store";
+import {useDispatch, useSelector} from '../../../services/store';
 
 const Profile: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const {email, name, successGet} = useSelector((state: RootState) => state.profile);
-    const {successLogout, isAuth} = useSelector((state: RootState) => state.authUser);
+    const dispatch = useDispatch();
+    const {email, name, successGet} = useSelector(state => state.profile);
+    const {successLogout, isAuth} = useSelector(state => state.authUser);
     const [localName, setLocalName] = useState<string>('');
     const [localEmail, setLocalEmail] = useState<string>('');
     const [isEditingName, setIsEditingName] = useState<boolean>(false);

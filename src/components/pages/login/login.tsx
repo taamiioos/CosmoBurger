@@ -3,13 +3,11 @@ import {loginUser, setEmailLogin, setPasswordLogin} from '../../../services/acti
 import {Button, EmailInput, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Link, useNavigate} from 'react-router-dom';
 import styles from './login.module.css';
-import {useSelector} from 'react-redux';
-import {RootState} from '../../../services/reducers/root-reducer';
-import {useAppDispatch} from "../../../services/store";
+import {useDispatch, useSelector} from '../../../services/store';
 
 const Login: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const {emailLogin, passwordLogin, isAuth, error} = useSelector((state: RootState) => state.authUser);
+    const dispatch = useDispatch();
+    const {emailLogin, passwordLogin, isAuth, error} = useSelector(state => state.authUser);
     const navigate = useNavigate();
     const [errorP, setErrorP] = React.useState<string>("");
     useEffect(() => {

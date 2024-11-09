@@ -12,11 +12,7 @@ import {TOrderActionTypes} from "../types/order-types";
 import {TIngredientsActionTypes} from "../types/ingredients-types";
 import {TPasswordActionTypes} from "../types/password-types";
 import {TProfileActionTypes} from "../types/profile-types";
-import {ThunkAction} from 'redux-thunk';
 import {WebSocketActions} from '../types/ws-types';
-
-export type ThunkAuthAction = ThunkAction<Promise<void>, RootState, unknown, TAuthActionTypes>;
-export type ThunkProfileAction = ThunkAction<Promise<void>, RootState, unknown, TProfileActionTypes>;
 
 const rootReducer = combineReducers({
     ingredients: ingredientsReducer,

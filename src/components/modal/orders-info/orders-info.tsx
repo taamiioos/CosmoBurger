@@ -1,19 +1,17 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import {useParams} from 'react-router-dom';
 import styles from './orders-info.module.css';
-import {useSelector} from 'react-redux';
-import {RootState} from '../../../services/reducers/root-reducer';
 import {fetchOrderDetails} from '../../../api/request-response';
 import {ClipLoader} from 'react-spinners';
 import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {useAppDispatch} from '../../../services/store';
 import {calculateOrderTotal, countIngredients, formatOrderDate, renderOrderStatus} from '../../helpers/helpers';
+import {useDispatch, useSelector } from '../../../services/store';
 
 const OrdersInfo: React.FC = () => {
     const {id} = useParams<{ id: string }>();
-    const {orders, currentOrder} = useSelector((state: RootState) => state.ws);
-    const ingredientsPrices = useSelector((state: RootState) => state.ingredients.ingredients);
-    const dispatch = useAppDispatch();
+    const {orders, currentOrder} = useSelector(state => state.ws);
+    const ingredientsPrices = useSelector(state => state.ingredients.ingredients);
+    const dispatch = useDispatch();
     const [loading, setLoading] = useState<boolean>(true);
 
     const getIngredientDetails = (ingredientId: string) =>

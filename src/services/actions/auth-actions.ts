@@ -1,13 +1,12 @@
 import {request} from '../../api/request-response';
 import {TAuthActionTypes, ActionTypes} from './../types/auth-types';
-import {ThunkAction} from 'redux-thunk';
-import {RootState} from './../reducers/root-reducer';
+import {AppThunk} from '../store';
 
 export const registerUser = (
     email: string,
     password: string,
     name: string
-): ThunkAction<Promise<void>, RootState, unknown, TAuthActionTypes> => {
+): AppThunk => {
     return async (dispatch) => {
         dispatch({type: ActionTypes.REGISTER_REQUEST});
         try {
@@ -39,7 +38,7 @@ export const registerUser = (
 export const loginUser = (
     email: string,
     password: string
-): ThunkAction<Promise<void>, RootState, unknown, TAuthActionTypes> => {
+): AppThunk => {
     return async (dispatch) => {
         dispatch({type: ActionTypes.LOGIN_REQUEST});
         try {
@@ -69,7 +68,7 @@ export const loginUser = (
     };
 };
 
-export const logoutUser = (): ThunkAction<Promise<void>, RootState, unknown, TAuthActionTypes> => {
+export const logoutUser = (): AppThunk => {
     return async (dispatch) => {
         const refreshToken = localStorage.getItem('refreshToken');
         dispatch({type: ActionTypes.LOGOUT_REQUEST});
@@ -96,7 +95,7 @@ export const logoutUser = (): ThunkAction<Promise<void>, RootState, unknown, TAu
 };
 
 
-export const refreshToken = (): ThunkAction<Promise<boolean>, RootState, unknown, TAuthActionTypes> => {
+export const refreshToken = (): AppThunk => {
     return async (dispatch) => {
         const refreshToken = localStorage.getItem('refreshToken');
         if (!refreshToken) return Promise.reject(' ');

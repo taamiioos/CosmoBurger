@@ -1,23 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 import styles from './feed.module.css';
 import {connect, disconnect, setWsUrl} from '../../../services/actions/ws-actions';
-import {RootState} from '../../../services/reducers/root-reducer';
-import {useAppDispatch} from '../../../services/store';
 import {IOrder} from '../../types/components-types';
 import OrderItem from '../../orders-tape-item/orders-tapes-item';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import {useModal} from '../../../hooks/use-modal';
 import {fetchOrderDetails} from '../../../api/request-response';
+import {useDispatch, useSelector} from '../../../services/store';
 
 const Feed: React.FC = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const {openModal} = useModal();
     const location = useLocation();
     const {id} = useParams<{ id: string }>();
-    const {orders, total, totalToday} = useSelector((state: RootState) => state.ws);
-    const ingredients = useSelector((state: RootState) => state.ingredients.ingredients);
+    const {orders, total, totalToday} = useSelector(state => state.ws);
+    const ingredients = useSelector(state => state.ingredients.ingredients);
     const [readyOrders, setReadyOrders] = useState<string[]>([]);
     const [inProgressOrders, setInProgressOrders] = useState<string[]>([]);
 

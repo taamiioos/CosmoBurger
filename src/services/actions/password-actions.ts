@@ -3,11 +3,9 @@ import {
 } from './../types/password-types';
 import {request} from '../../api/request-response';
 import {TPasswordActionTypes} from './../types/password-types';
-import {ThunkAction} from 'redux-thunk';
-import {RootState} from '../../services/reducers/root-reducer';
+import {AppThunk} from '../store';
 
-type ThunkPasswordAction = ThunkAction<void, RootState, unknown, TPasswordActionTypes>;
-export const forgotPasswordRequest = (email: string): ThunkPasswordAction => {
+export const forgotPasswordRequest = (email: string): AppThunk => {
     return async (dispatch) => {
         dispatch({type: ActionTypes.FORGOT_PASSWORD_REQUEST});
         try {
@@ -29,7 +27,7 @@ export const forgotPasswordRequest = (email: string): ThunkPasswordAction => {
     };
 };
 
-export const resetPasswordRequest = (password: string, token: string): ThunkPasswordAction => {
+export const resetPasswordRequest = (password: string, token: string): AppThunk => {
     return async (dispatch) => {
         dispatch({type: ActionTypes.RESET_PASSWORD_REQUEST});
         try {

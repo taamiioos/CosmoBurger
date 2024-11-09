@@ -13,38 +13,23 @@ import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {ProtectedRouteElement} from '../protected-element/protected-route-element';
 import {RestrictedRoute} from '../protected-element/restricted-route';
-import {useSelector} from 'react-redux';
 import IngredientDetails from '../modal/ingredient-details/ingredient-details';
 import Page404 from '../pages/404page/404page';
 import {Navigate} from 'react-router-dom';
 import Modal from '../modal/modal';
 import {setIngredients} from '../../services/actions/ingredients-actions';
-import {RootState} from '../../services/reducers/root-reducer';
 import Feed from "../pages/feed/feed";
-import {connect, disconnect} from './../../services/actions/ws-actions';
 import OrdersInfo from "../modal/orders-info/orders-info";
 import {useModal} from "../../hooks/use-modal";
-import {useAppDispatch} from "../../services/store";
+import { useDispatch, useSelector } from "../../services/store";
 
 const App: React.FC = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {hasVisitedForgotPassword} = useSelector((state: RootState) => state.authUser);
+    const {hasVisitedForgotPassword} = useSelector(state => state.authUser);
     const location = useLocation();
-    const {isModalOpen, openModal, closeModal} = useModal();
+    const {closeModal} = useModal();
     const background = location.state?.background;
-    const isConnected = useSelector((state: RootState) => state.ws.isConnected);
-
-    useEffect(() => {
-        if (!isConnected) {
-            dispatch(connect());
-        }
-        return () => {
-            if (isConnected) {
-                dispatch(disconnect());
-            }
-        };
-    }, [dispatch, isConnected]);
 
     useEffect(() => {
         dispatch(setIngredients());
