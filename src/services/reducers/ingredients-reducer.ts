@@ -1,15 +1,14 @@
-import {
-    SET_TAB,
-    SET_CURRENT_INGREDIENT,
-    CLEAR_CURRENT_INGREDIENT,
-    INCREMENT_INGREDIENT_COUNT,
-    DECREMENT_INGREDIENT_COUNT,
-    INGREDIENTS_REQUEST,
-    INGREDIENTS_SUCCESS,
-    INGREDIENTS_ERROR,
-    RESET_INGREDIENT_COUNT
-} from './../actions/action-types';
-import {TIngredientsActionTypes, IIngredientsState} from "../types/ingredients-types";
+import {IIngredient} from './../../components/types/components-types';
+import {TIngredientsActionTypes, ActionTypes} from "../types/ingredients-types";
+
+export interface IIngredientsState {
+    ingredients: IIngredient[];
+    currentIngredient: IIngredient | null;
+    useTab: string;
+    request: boolean;
+    failed: boolean;
+    error: string;
+}
 
 const initialState: IIngredientsState = {
     ingredients: [],
@@ -22,31 +21,31 @@ const initialState: IIngredientsState = {
 
 const ingredientsReducer = (state = initialState, action: TIngredientsActionTypes): IIngredientsState => {
     switch (action.type) {
-        case INGREDIENTS_REQUEST:
+        case ActionTypes.INGREDIENTS_REQUEST:
             return {
                 ...state, request: true, failed: false, error: ''
             };
-        case INGREDIENTS_SUCCESS:
+        case ActionTypes.INGREDIENTS_SUCCESS:
             return {
-                ...state, ingredients: action.payload, request: false, failed: false, error: ''
+                ...state, ingredients: action.payload || [], request: false, failed: false, error: ''
             };
-        case INGREDIENTS_ERROR:
+        case ActionTypes.INGREDIENTS_ERROR:
             return {
-                ...state, request: false, failed: true, error: action.payload
+                ...state, request: false, failed: true
             };
-        case SET_CURRENT_INGREDIENT:
+        case ActionTypes.SET_CURRENT_INGREDIENT:
             return {
-                ...state, currentIngredient: action.payload,
+                ...state, currentIngredient: action.payload || null,
             };
-        case CLEAR_CURRENT_INGREDIENT:
+        case ActionTypes.CLEAR_CURRENT_INGREDIENT:
             return {
                 ...state, currentIngredient: null,
             };
-        case SET_TAB:
+        case ActionTypes.SET_TAB:
             return {
-                ...state, useTab: action.payload,
+                ...state, useTab: action.payload || '',
             };
-        case INCREMENT_INGREDIENT_COUNT:
+        case ActionTypes.INCREMENT_INGREDIENT_COUNT:
             return {
                 ...state,
                 ingredients: state.ingredients.map(ingredient =>
@@ -56,7 +55,7 @@ const ingredientsReducer = (state = initialState, action: TIngredientsActionType
                     } : ingredient
                 ),
             };
-        case DECREMENT_INGREDIENT_COUNT:
+        case ActionTypes.DECREMENT_INGREDIENT_COUNT:
             return {
                 ...state,
                 ingredients: state.ingredients.map(ingredient =>
@@ -66,7 +65,7 @@ const ingredientsReducer = (state = initialState, action: TIngredientsActionType
                     } : ingredient
                 ),
             };
-        case RESET_INGREDIENT_COUNT:
+        case ActionTypes.RESET_INGREDIENT_COUNT:
             return {
                 ...state,
                 ingredients: state.ingredients.map(ingredient => ({

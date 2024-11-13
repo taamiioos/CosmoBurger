@@ -1,74 +1,33 @@
-import {
-    SET_TAB,
-    SET_CURRENT_INGREDIENT,
-    CLEAR_CURRENT_INGREDIENT,
-    INCREMENT_INGREDIENT_COUNT,
-    DECREMENT_INGREDIENT_COUNT,
-    INGREDIENTS_REQUEST,
-    INGREDIENTS_SUCCESS,
-    INGREDIENTS_ERROR,
-    RESET_INGREDIENT_COUNT
-} from './../actions/action-types';
 import {IIngredient} from './../../components/types/components-types';
 
-interface ISetTabAction {
-    type: typeof SET_TAB;
-    payload: string;
-}
+export const ActionTypes = {
+    SET_TAB: 'SET_TAB',
+    SET_CURRENT_INGREDIENT: 'SET_CURRENT_INGREDIENT',
+    CLEAR_CURRENT_INGREDIENT: 'CLEAR_CURRENT_INGREDIENT',
+    INCREMENT_INGREDIENT_COUNT: 'INCREMENT_INGREDIENT_COUNT',
+    DECREMENT_INGREDIENT_COUNT: 'DECREMENT_INGREDIENT_COUNT',
+    INGREDIENTS_REQUEST: 'INGREDIENTS_REQUEST',
+    INGREDIENTS_SUCCESS: 'INGREDIENTS_SUCCESS',
+    INGREDIENTS_ERROR: 'INGREDIENTS_ERROR',
+    RESET_INGREDIENT_COUNT: 'RESET_INGREDIENT_COUNT',
+} as const;
 
-interface ISetCurrentIngredientAction {
-    type: typeof SET_CURRENT_INGREDIENT;
-    payload: IIngredient;
-}
+export type ActionTypes = typeof ActionTypes[keyof typeof ActionTypes];
 
-interface IClearCurrentIngredientAction {
-    type: typeof CLEAR_CURRENT_INGREDIENT;
-}
-
-interface IIncrementIngredientCountAction {
-    type: typeof INCREMENT_INGREDIENT_COUNT;
-    payload: string;
-}
-
-interface IDecrementIngredientCountAction {
-    type: typeof DECREMENT_INGREDIENT_COUNT;
-    payload: string;
-}
-
-interface IIngredientsRequestAction {
-    type: typeof INGREDIENTS_REQUEST;
-}
-
-interface IIngredientsSuccessAction {
-    type: typeof INGREDIENTS_SUCCESS;
-    payload: any[];
-}
-
-interface IIngredientsErrorAction {
-    type: typeof INGREDIENTS_ERROR;
-    payload: string;
-}
-
-interface IResetIngredientCountAction {
-    type: typeof RESET_INGREDIENT_COUNT;
+interface IAction<T extends ActionTypes, P = void> {
+    type: T;
+    payload?: P;
 }
 
 export type TIngredientsActionTypes =
-    | ISetTabAction
-    | ISetCurrentIngredientAction
-    | IClearCurrentIngredientAction
-    | IIncrementIngredientCountAction
-    | IDecrementIngredientCountAction
-    | IIngredientsRequestAction
-    | IIngredientsSuccessAction
-    | IIngredientsErrorAction
-    | IResetIngredientCountAction;
+    | IAction<typeof ActionTypes.SET_TAB, string>
+    | IAction<typeof ActionTypes.SET_CURRENT_INGREDIENT, IIngredient>
+    | IAction<typeof ActionTypes.CLEAR_CURRENT_INGREDIENT>
+    | IAction<typeof ActionTypes.INCREMENT_INGREDIENT_COUNT, string>
+    | IAction<typeof ActionTypes.DECREMENT_INGREDIENT_COUNT, string>
+    | IAction<typeof ActionTypes.INGREDIENTS_REQUEST>
+    | IAction<typeof ActionTypes.INGREDIENTS_SUCCESS, IIngredient[]>
+    | IAction<typeof ActionTypes.INGREDIENTS_ERROR, string>
+    | IAction<typeof ActionTypes.RESET_INGREDIENT_COUNT>;
 
-export interface IIngredientsState {
-    ingredients: IIngredient[];
-    currentIngredient: IIngredient | null;
-    useTab: string;
-    request: boolean;
-    failed: boolean;
-    error: string;
-}
+

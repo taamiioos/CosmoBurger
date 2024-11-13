@@ -5,7 +5,6 @@ import OrderDetails from '../modal/order-details/order-details';
 import {useModal} from '../../hooks/use-modal';
 import Modal from '../modal/modal';
 import {useDrop} from 'react-dnd';
-import {useDispatch, useSelector} from 'react-redux';
 import {
     addIngredient,
     removeIngredient,
@@ -19,35 +18,35 @@ import {decrementIngredientCount, incrementIngredientCount} from '../../services
 import DraggableIngredient from './draggable-ingredient';
 import {ClipLoader} from 'react-spinners';
 import {useNavigate} from 'react-router-dom';
-import {RootState} from '../../services/reducers/root-reducer';
-import {AppDispatch} from '../../services/store';
 import {IIngredient} from './../types/components-types';
-
-const useAppDispatch = () => useDispatch<AppDispatch>();
+import {useDispatch, useSelector} from "../../services/store";
 
 const BurgerConstructor: React.FC = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {bun, ingredients, price} = useSelector((state: RootState) => state.constructorIngredients);
+    const {bun, ingredients, price} = useSelector(state => state.constructorIngredients);
     const {isModalOpen, openModal, closeModal} = useModal();
-    const {orderNumber, orderRequest, orderFailed} = useSelector((state: RootState) => state.order);
-    const {isAuth} = useSelector((state: RootState) => state.authUser);
+    const {orderNumber, orderRequest, orderFailed} = useSelector(state => state.order);
+    const {isAuth} = useSelector(state => state.authUser);
 
-    const handleOrder = () => {
+    const handleOrder = async () => {
         if (!isAuth) {
             navigate("/login", {state: {from: "/"}});
             return;
         }
-        const ingredientIds = ingredients.map(ingredient => ingredient._id);
-        dispatch(makeOrder(ingredientIds))
-            .then(() => {
-                dispatch(clearConstructor());
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        const ingredientIds: string[] = [];
+        if (bun) {
+            ingredientIds.push(bun._id);
+            ingredientIds.push(bun._id);
+        }
+        ingredientIds.push(...ingredients.map(ingredient => ingredient._id));
+        try {
+            dispatch(makeOrder(ingredientIds));
+            dispatch(clearConstructor());
+        } catch (error) {
+            console.error(error);
+        }
     };
-
     useEffect(() => {
         if (orderNumber && !orderRequest && !orderFailed) {
             openModal();

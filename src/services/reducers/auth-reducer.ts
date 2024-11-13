@@ -1,32 +1,28 @@
-import {
-    REGISTER_REQUEST,
-    REGISTER_SUCCESS,
-    REGISTER_FAILURE,
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    LOGOUT_REQUEST,
-    LOGOUT_SUCCESS,
-    LOGOUT_FAILURE,
-    TOKEN_REFRESH_REQUEST,
-    TOKEN_REFRESH_SUCCESS,
-    TOKEN_REFRESH_FAILURE,
-    SET_EMAIL_LOGIN,
-    SET_PASSWORD_LOGIN,
-    SET_EMAIL_REGISTER,
-    SET_PASSWORD_REGISTER,
-    SET_NAME_REGISTER,
-    FORGOT_PASSWORD_VISITED,
-} from './../actions/action-types';
-import {
-    IAuthState, TAuthActionTypes
-} from './../types/auth-types';
+import {TAuthActionTypes, ActionTypes} from './../types/auth-types';
+
+export interface IAuthState {
+    isAuth: boolean;
+    user: any;
+    accessToken: string | null;
+    refreshToken: string | null;
+    error: string | null;
+    successRegister: boolean;
+    successLogin: boolean;
+    successLogout: boolean;
+    successToken: boolean;
+    emailLogin: string;
+    passwordLogin: string;
+    emailRegister: string;
+    passwordRegister: string;
+    nameRegister: string;
+    hasVisitedForgotPassword: boolean;
+}
 
 const initialState: IAuthState = {
     isAuth: !!localStorage.getItem('accessToken'),
     user: null,
-    accessToken: localStorage.getItem('accessToken'),
-    refreshToken: localStorage.getItem('refreshToken'),
+    accessToken: localStorage.getItem('accessToken') ?? null,
+    refreshToken: localStorage.getItem('refreshToken') ?? null,
     error: null,
     successRegister: false,
     successLogin: false,
@@ -39,118 +35,55 @@ const initialState: IAuthState = {
     nameRegister: "",
     hasVisitedForgotPassword: false,
 };
+
 const authReducer = (state = initialState, action: TAuthActionTypes): IAuthState => {
     switch (action.type) {
-        case FORGOT_PASSWORD_VISITED:
+        case ActionTypes.REGISTER_REQUEST:
+            return {...state, error: null};
+        case ActionTypes.REGISTER_SUCCESS:
             return {
-                ...state,
-                hasVisitedForgotPassword: true
+                ...state, isAuth: true, user: action.payload?.user, accessToken: action.payload?.accessToken || null,
+                refreshToken: action.payload?.refreshToken || null
             };
+        case ActionTypes.REGISTER_FAILURE:
+            return {...state, error: action.payload || null};
+        case ActionTypes.LOGIN_REQUEST:
+            return {...state, error: null};
+        case ActionTypes.LOGIN_SUCCESS:
+            return {
+                ...state, isAuth: true, user: action.payload?.user, accessToken: action.payload?.accessToken || null,
+                refreshToken: action.payload?.refreshToken || null
+            };
+        case ActionTypes.LOGIN_FAILURE:
+            return {...state, error: action.payload || null};
+        case ActionTypes.LOGOUT_REQUEST:
+            return {...state, error: null};
+        case ActionTypes.LOGOUT_SUCCESS:
+            return {...initialState};
+        case ActionTypes.TOKEN_REFRESH_FAILURE:
+            return {...state, error: action.payload || " "};
 
-        case SET_EMAIL_LOGIN:
+        case ActionTypes.TOKEN_REFRESH_REQUEST:
+            return {...state, error: null};
+        case ActionTypes.TOKEN_REFRESH_SUCCESS:
             return {
-                ...state,
-                emailLogin: action.payload,
-                error: null,
+                ...state, accessToken: action.payload?.accessToken || null,
+                refreshToken: action.payload?.refreshToken || null
             };
-        case SET_PASSWORD_LOGIN:
-            return {
-                ...state,
-                passwordLogin: action.payload,
-                error: null,
-            };
-        case SET_EMAIL_REGISTER:
-            return {
-                ...state,
-                emailRegister: action.payload,
-                error: null,
-            };
-        case SET_PASSWORD_REGISTER:
-            return {
-                ...state,
-                passwordRegister: action.payload,
-                error: null,
-            };
-        case SET_NAME_REGISTER:
-            return {
-                ...state,
-                nameRegister: action.payload,
-                error: null,
-            };
-
-        case REGISTER_REQUEST:
-        case LOGIN_REQUEST:
-        case LOGOUT_REQUEST:
-        case TOKEN_REFRESH_REQUEST:
-            return {
-                ...state,
-                error: null,
-                successRegister: false,
-                successLogin: false,
-                successLogout: false,
-                successToken: false,
-            };
-
-        case REGISTER_SUCCESS:
-            return {
-                ...state,
-                isAuth: true,
-                user: action.payload.user,
-                accessToken: action.payload.accessToken,
-                refreshToken: action.payload.refreshToken,
-                successRegister: true,
-                error: null,
-            };
-        case LOGIN_SUCCESS:
-            return {
-                ...state,
-                user: action.payload.user,
-                isAuth: true,
-                accessToken: action.payload.accessToken,
-                refreshToken: action.payload.refreshToken,
-                successLogin: true,
-                error: null,
-            };
-        case LOGOUT_SUCCESS:
-            return {
-                ...state,
-                user: null,
-                isAuth: false,
-                accessToken: null,
-                refreshToken: null,
-                successLogout: true,
-                error: null,
-            };
-        case TOKEN_REFRESH_SUCCESS:
-            return {
-                ...state,
-                accessToken: action.payload.accessToken,
-                refreshToken: action.payload.refreshToken,
-                successToken: true,
-                error: null,
-            };
-
-        case REGISTER_FAILURE:
-            return {
-                ...state,
-                error: action.payload
-            };
-        case LOGIN_FAILURE:
-            return {
-                ...state,
-                error: action.payload
-            };
-        case LOGOUT_FAILURE:
-        case TOKEN_REFRESH_FAILURE:
-            return {
-                ...state,
-                error: action.payload,
-                successRegister: false,
-                successLogin: false,
-                successLogout: false,
-                successToken: false
-            };
-
+        case ActionTypes.TOKEN_REFRESH_FAILURE:
+            return {...state, error: action.payload || null};
+        case ActionTypes.SET_EMAIL_REGISTER:
+            return {...state, emailRegister: action.payload || " "};
+        case ActionTypes.SET_PASSWORD_REGISTER:
+            return {...state, passwordRegister: action.payload || ""};
+        case ActionTypes.SET_NAME_REGISTER:
+            return {...state, nameRegister: action.payload || " "};
+        case ActionTypes.SET_EMAIL_LOGIN:
+            return {...state, emailLogin: action.payload || ""};
+        case ActionTypes.SET_PASSWORD_LOGIN:
+            return {...state, passwordLogin: action.payload || ""};
+        case ActionTypes.FORGOT_PASSWORD_VISITED:
+            return {...state, hasVisitedForgotPassword: true};
         default:
             return state;
     }

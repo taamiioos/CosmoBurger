@@ -2,15 +2,18 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    margin-top: 208px;
 }
 
 .container {
     display: flex;
     flex-direction: row;
+    width: 900px;
 }
 
 .menu {
     margin-right: 68px;
+    margin-top: 228px;
     display: flex;
     flex-direction: column;
 }
@@ -23,13 +26,20 @@
     padding-top: 20px;
     text-decoration: none;
     color: aliceblue;
+
+}
+.menuElement:active {
+    color: rgba(133, 133, 173, 1);
 }
 
+.menuElement:focus{
+    color: rgba(133, 133, 173, 1);
+
+}
 .all {
     display: flex;
     flex-direction: column;
-    margin-top: 228px;
-    margin-right: 380px;
+    margin-right: 370px;
 }
 
 .textProfile {
@@ -45,4 +55,7 @@
     flex-direction: row;
     margin-top: 20px;
     margin-left: 400px;
+}
+.orders{
+    display: flex;
 }

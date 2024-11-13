@@ -1,62 +1,69 @@
 import {
-    GET_USER_REQUEST,
-    GET_USER_SUCCESS,
-    GET_USER_FAILURE,
-    UPDATE_USER_REQUEST,
-    UPDATE_USER_SUCCESS,
-    UPDATE_USER_FAILURE,
-} from '../actions/action-types';
-import {
-    IProfileState, TProfileActionTypes
-} from './../types/profile-types';
+    ActionTypes,
+    TProfileActionTypes
+} from '../types/profile-types';
+
+export interface IProfileState {
+    email: string;
+    name: string;
+    error: string;
+    successGet: boolean;
+    successPatch: boolean;
+}
 
 const initialState: IProfileState = {
     email: "",
     name: "",
-    error: null,
+    error: '',
     successGet: false,
     successPatch: false
 };
 
 const profileReducer = (state = initialState, action: TProfileActionTypes): IProfileState => {
     switch (action.type) {
-        case GET_USER_REQUEST:
+        case ActionTypes.GET_USER_REQUEST:
             return {
                 ...state,
                 successGet: false,
-                error: null,
             };
-        case GET_USER_SUCCESS:
-            return {
-                ...state,
-                successGet: true,
-                email: action.payload.email,
-                name: action.payload.name,
-            };
-        case GET_USER_FAILURE:
-            return {
-                ...state,
-                successGet: false,
-                error: action.payload,
-            };
-        case UPDATE_USER_REQUEST:
-            return {
-                ...state,
-                successPatch: false,
-                error: null,
-            };
-        case UPDATE_USER_SUCCESS:
-            return {
-                ...state,
-                successPatch: true,
-                email: action.payload.email,
-                name: action.payload.name,
-            };
-        case UPDATE_USER_FAILURE:
+        case ActionTypes.GET_USER_SUCCESS:
+            if (action.payload) {
+                return {
+                    ...state,
+                    successGet: true,
+                    email: action.payload.email,
+                    name: action.payload.name,
+                };
+            }
+        case ActionTypes.GET_USER_FAILURE:
+            if (action.payload) {
+
+                return {
+                    ...state,
+                    successGet: false,
+                };
+            }
+
+        case ActionTypes.UPDATE_USER_REQUEST:
             return {
                 ...state,
                 successPatch: false,
-                error: action.payload,
+            };
+        case ActionTypes.UPDATE_USER_SUCCESS:
+            if (action.payload) {
+
+                return {
+                    ...state,
+                    successPatch: true,
+                    email: action.payload.email,
+                    name: action.payload.name,
+                };
+            }
+
+        case ActionTypes.UPDATE_USER_FAILURE:
+            return {
+                ...state,
+                successPatch: false,
             };
         default:
             return state;

@@ -1,0 +1,97 @@
+.orderDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 720px;
+}
+
+.scroll {
+    min-height: 100px;
+    max-height: 366px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-color: rgba(133, 133, 173, 1) transparent;
+    margin-top: -10px;
+}
+
+.ingredient {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.ingredientImage {
+    background-color: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(76, 76, 255, 1);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+}
+
+.ingredientName {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.ingredientPrice {
+    text-align: right;
+    margin-left: 20px;
+    margin-right: 40px;
+    align-items: center;
+}
+
+.orderStatus {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 40px;
+    margin-top: 8px;
+}
+
+.orderNumber {
+    text-align: center;
+    margin-top: -55px;
+}
+
+.orderName {
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 40px 40px;
+}
+
+.statusDone {
+    color: rgba(0, 204, 204, 1);
+}
+
+.status {
+    color: #ffffff;
+}
+
+.consist {
+    margin-top: 60px;
+    margin-left: 40px;
+}
+
+.icon {
+    align-items: center;
+    width: 40px;
+}
+
+.orderPrice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2px;
+}

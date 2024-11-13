@@ -5,8 +5,14 @@ declare module 'react' {
         onPointerEnterCapture?: (e: React.PointerEvent<T>) => void
         onPointerLeaveCapture?: (e: React.PointerEvent<T>) => void
     }
+
     interface RefAttributes<T> {
         onPointerEnterCapture?: (e: React.PointerEvent<T>) => void
         onPointerLeaveCapture?: (e: React.PointerEvent<T>) => void
+    }
+}
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: (...args: any[]) => any;
     }
 }

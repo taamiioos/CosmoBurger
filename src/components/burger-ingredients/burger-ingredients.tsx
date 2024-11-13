@@ -1,22 +1,17 @@
 import React, {useEffect, useRef} from "react";
 import burgerStyles from "../burger-ingredients/burger-ingredients.module.css";
 import {useModal} from '../../hooks/use-modal';
-import {useDispatch, useSelector} from 'react-redux';
 import {setCurrentIngredient, setTab} from '../../services/actions/ingredients-actions';
 import Ingredient from './ingredient';
 import {useParams, useNavigate, useLocation} from "react-router-dom";
 import {useInView} from 'react-intersection-observer';
-import {RootState} from '../../services/reducers/root-reducer';
-import {AppDispatch} from '../../services/store';
 import {IIngredient} from './../types/components-types';
-
-const useAppDispatch = () => useDispatch<AppDispatch>();
-
+import { useDispatch, useSelector } from "../../services/store";
 const BurgerIngredients = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-    const {ingredients, useTab} = useSelector((state: RootState) => state.ingredients);
+    const {ingredients, useTab} = useSelector(state => state.ingredients);
     const {openModal} = useModal();
     const {id} = useParams();
     const bunsRef = useRef<HTMLHeadingElement | null>(null);
@@ -33,7 +28,6 @@ const BurgerIngredients = () => {
     }, [bunsRefCallback, saucesRefCallback, fillingsRefCallback]);
 
     const handleModalOpen = (ingredient: IIngredient) => {
-        dispatch(setCurrentIngredient(ingredient));
         openModal();
         navigate(`/ingredients/${ingredient._id}`, {state: {background: location}});
     };

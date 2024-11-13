@@ -1,7 +1,11 @@
-import {ORDER_REQUEST, ORDER_SUCCESS, ORDER_ERROR} from './../actions/action-types';
-import {
-    TOrderActionTypes, IOrderState
-} from './../types/order-types';
+import {TOrderActionTypes, ActionTypes} from './../types/order-types';
+
+export interface IOrderState {
+    orderNumber: number | null;
+    orderRequest: boolean;
+    orderFailed: boolean;
+    error: any;
+}
 
 const initialState: IOrderState = {
     orderNumber: null,
@@ -12,21 +16,21 @@ const initialState: IOrderState = {
 
 const orderReducer = (state = initialState, action: TOrderActionTypes): IOrderState => {
     switch (action.type) {
-        case ORDER_REQUEST:
+        case ActionTypes.ORDER_REQUEST:
             return {
                 ...state,
                 orderRequest: true,
                 orderFailed: false,
                 error: ''
             };
-        case ORDER_SUCCESS:
+        case ActionTypes.ORDER_SUCCESS:
             return {
                 ...state,
-                orderNumber: action.payload,
+                orderNumber: typeof action.payload === 'number' ? action.payload : null,
                 orderRequest: false,
                 orderFailed: false
             };
-        case ORDER_ERROR:
+        case ActionTypes.ORDER_ERROR:
             return {
                 ...state,
                 orderRequest: false,

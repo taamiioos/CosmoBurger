@@ -1,74 +1,29 @@
-import {
-    FORGOT_PASSWORD_REQUEST,
-    FORGOT_PASSWORD_SUCCESS,
-    FORGOT_PASSWORD_ERROR,
-    RESET_PASSWORD_REQUEST,
-    RESET_PASSWORD_SUCCESS,
-    RESET_PASSWORD_ERROR,
-    SET_EMAIL_FORGOT,
-    SET_PASSWORD_RESET,
-    SET_CODE_RESET
-} from '../actions/action-types';
+export const ActionTypes = {
+    FORGOT_PASSWORD_REQUEST: 'FORGOT_PASSWORD_REQUEST',
+    FORGOT_PASSWORD_SUCCESS: 'FORGOT_PASSWORD_SUCCESS',
+    FORGOT_PASSWORD_ERROR: 'FORGOT_PASSWORD_ERROR',
+    RESET_PASSWORD_REQUEST: 'RESET_PASSWORD_REQUEST',
+    RESET_PASSWORD_SUCCESS: 'RESET_PASSWORD_SUCCESS',
+    RESET_PASSWORD_ERROR: 'RESET_PASSWORD_ERROR',
+    SET_EMAIL_FORGOT: 'SET_EMAIL_FORGOT',
+    SET_PASSWORD_RESET: 'SET_PASSWORD_RESET',
+    SET_CODE_RESET: 'SET_CODE_RESET',
+} as const;
+export type ActionTypes = typeof ActionTypes[keyof typeof ActionTypes];
 
-interface IForgotPasswordRequestAction {
-    type: typeof FORGOT_PASSWORD_REQUEST;
-}
-
-interface IForgotPasswordSuccessAction {
-    type: typeof FORGOT_PASSWORD_SUCCESS;
-    payload: any;
-}
-
-interface IForgotPasswordErrorAction {
-    type: typeof FORGOT_PASSWORD_ERROR;
-    payload: any;
-}
-
-interface IResetPasswordRequestAction {
-    type: typeof RESET_PASSWORD_REQUEST;
-}
-
-interface IResetPasswordSuccessAction {
-    type: typeof RESET_PASSWORD_SUCCESS;
-    payload: any;
-}
-
-interface IResetPasswordErrorAction {
-    type: typeof RESET_PASSWORD_ERROR;
-    payload: any;
-}
-
-interface ISetEmailForgotAction {
-    type: typeof SET_EMAIL_FORGOT;
-    payload: string;
-}
-
-interface ISetPasswordResetAction {
-    type: typeof SET_PASSWORD_RESET;
-    payload: string;
-}
-
-interface ISetCodeResetAction {
-    type: typeof SET_CODE_RESET;
-    payload: string;
+interface IAction<T extends ActionTypes, P = void> {
+    type: T;
+    payload?: P;
 }
 
 export type TPasswordActionTypes =
-    | IForgotPasswordRequestAction
-    | IForgotPasswordSuccessAction
-    | IForgotPasswordErrorAction
-    | IResetPasswordRequestAction
-    | IResetPasswordSuccessAction
-    | IResetPasswordErrorAction
-    | ISetEmailForgotAction
-    | ISetPasswordResetAction
-    | ISetCodeResetAction;
+    | IAction<typeof ActionTypes.FORGOT_PASSWORD_REQUEST>
+    | IAction<typeof ActionTypes.FORGOT_PASSWORD_SUCCESS, { message: string }>
+    | IAction<typeof ActionTypes.FORGOT_PASSWORD_ERROR, string>
+    | IAction<typeof ActionTypes.RESET_PASSWORD_REQUEST>
+    | IAction<typeof ActionTypes.RESET_PASSWORD_SUCCESS, { message: string }>
+    | IAction<typeof ActionTypes.RESET_PASSWORD_ERROR, string>
+    | IAction<typeof ActionTypes.SET_EMAIL_FORGOT, string>
+    | IAction<typeof ActionTypes.SET_PASSWORD_RESET, string>
+    | IAction<typeof ActionTypes.SET_CODE_RESET, string>;
 
-export interface IPasswordState {
-    email: string;
-    password: string;
-    code: string;
-    error: any | null;
-    successForgot: boolean;
-    successReset: boolean;
-}

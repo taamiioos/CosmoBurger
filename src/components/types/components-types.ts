@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import {ReactNode} from "react";
 
 export interface IIngredient {
     readonly _id: string;
@@ -14,36 +14,46 @@ export interface IIngredient {
     uniqueId?: string;
 }
 
-// Props
 export interface IIngredientProps {
     ingredient: IIngredient;
     handleModalOpen: (ingredient: IIngredient) => void;
 }
+
 export interface IDraggableIngredientProps {
     ingredient: IIngredient;
     index: number;
     moveIngredient: (dragIndex: number, hoverIndex: number) => void;
     handleRemoveIngredient: (index: number, ingredientId: string) => void;
 }
-// Props
 
-
-//Modal
 export interface IModal {
     children: React.ReactNode;
     onClose: () => void;
     title: string;
 }
+
 export interface IModalOverlay {
     onClose: () => void;
 }
-//Modal
 
-//Route
 export interface ProtectedRouteElementProps {
     children: ReactNode;
 }
+
 export interface RestrictedRouteProps {
     children: ReactNode;
 }
-//Route
+
+export interface IOrder {
+    _id: string;
+    number: number;
+    name: string;
+    status: 'done' | 'pending';
+    createdAt: string;
+    ingredients: string[];
+}
+export interface IOrderItemProps {
+    order: IOrder;
+    ingredientsPrices: Array<{ _id: string; image: string; price: number }>;
+    onClick: (order: IOrder) => void;
+}
