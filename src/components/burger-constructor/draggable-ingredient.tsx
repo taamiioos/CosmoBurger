@@ -5,11 +5,11 @@ import burgerConstructorStyles from "./burger-constructor.module.css";
 import {IDraggableIngredientProps} from './../types/components-types';
 
 const DraggableIngredient: React.FC<IDraggableIngredientProps> = ({
-                                                                     ingredient,
-                                                                     index,
-                                                                     moveIngredient,
-                                                                     handleRemoveIngredient
-                                                                 }) => {
+                                                                      ingredient,
+                                                                      index,
+                                                                      moveIngredient,
+                                                                      handleRemoveIngredient
+                                                                  }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     const [, drop] = useDrop({
@@ -34,19 +34,18 @@ const DraggableIngredient: React.FC<IDraggableIngredientProps> = ({
 
     drag(drop(ref));
 
-
     return (
-        <div ref={ref} className={burgerConstructorStyles.elementRow}>
-            <DragIcon type="primary"/>
+        <div ref={ref} className={burgerConstructorStyles.elementRow} data-testid={`ingredient-${ingredient.uniqueId}`}>
+            <DragIcon type="primary" data-testid={`drag-icon-${ingredient.uniqueId}`}/>
             <ConstructorElement
                 text={ingredient.name}
                 price={ingredient.price}
                 thumbnail={ingredient.image}
                 handleClose={() => handleRemoveIngredient(index, ingredient._id)}
+                data-testid={`constructor-element-${ingredient.uniqueId}`}
             />
         </div>
     );
 };
-
 
 export default DraggableIngredient;

@@ -9,7 +9,7 @@ export interface IPasswordState {
     successReset: boolean;
 }
 
-const initialState: IPasswordState = {
+export const initialState: IPasswordState = {
     email: '',
     password: '',
     code: '',

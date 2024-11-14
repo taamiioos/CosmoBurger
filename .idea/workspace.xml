@@ -4,33 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="sprint 5/ step 1">
+    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="sprint 5/ step 1 fix 1">
+      <change afterPath="$PROJECT_DIR$/cypress.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/fixtures/example.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/integration/dnd.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/plugins/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/screenshots/dnd.spec.js/products management works correctly -- should drag and drop ingredients -- before all hook (failed).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/support/commands.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/support/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/videos/dnd.spec.js.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/reducers/auth-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/reducers/order-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/reducers/password-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/reducers/profile-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/reducers/ws-reducer.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/request-response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/request-response.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/draggable-ingredient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/draggable-ingredient.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/modal-overlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modal-overlay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modal/order-details/order-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/order-details/order-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/orders-info/orders-info.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/orders-info/orders-info.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order-history/order-history.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order-history/order-history.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/feed/feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/feed/feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/forgot-password/forgot-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/forgot-password/forgot-password.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/profile/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/profile/profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/registration/registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/registration/registration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/reset-password/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/reset-password/reset-password.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/protected-element/protected-route-element.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/protected-element/protected-route-element.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/protected-element/restricted-route.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/protected-element/restricted-route.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/actions/auth-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/auth-actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/actions/ingredients-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/ingredients-actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/actions/order-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/order-actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/actions/password-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/password-actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/actions/profile-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/actions/profile-actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/middleware/socket.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/middleware/socket.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/reducers/root-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/root-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/types/components-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/types/components-types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reducers/auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/auth-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reducers/order-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/order-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reducers/password-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/password-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reducers/profile-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/profile-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/reducers/ws-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/ws-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +51,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JSX File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -68,6 +78,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/cypress/integration/dnd.spec.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/pages/feed/feed.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
@@ -89,19 +100,23 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "#7 on sprint-5/step-1",
+    "git-widget-placeholder": "sprint-6/step-1",
     "jsx.switch.disabled": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/tata/IdeaProjects/react-burgerFirst/src/components/modal/orders-info",
+    "last_opened_file_path": "/Users/tata/IdeaProjects/react-burgerFirst/cypress/support",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/tata/IdeaProjects/react-burgerFirst/node_modules/react-scripts",
     "nodejs_interpreter_path": "/Users/tata/.nvm/versions/node/v18.20.4/bin/node",
     "nodejs_package_manager_path": "npm",
     "npm.build.executor": "Run",
     "npm.npm start.executor": "Run",
+    "npm.test.executor": "Run",
+    "npm.test:e2e:open.executor": "Run",
+    "npm.test:e2e:run.executor": "Run",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -112,18 +127,30 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cypress/support" />
+      <recent name="$PROJECT_DIR$/cypress" />
       <recent name="$PROJECT_DIR$/src/components/modal/orders-info" />
       <recent name="$PROJECT_DIR$/src/components/helpers" />
       <recent name="$PROJECT_DIR$/src/services" />
-      <recent name="$PROJECT_DIR$/src/components/pages" />
-      <recent name="$PROJECT_DIR$/src/components/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/pages" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.npm start">
+  <component name="RunManager" selected="npm.test">
+    <configuration name="Проверка редьюсера authReducer.Проверка установки пароля при входе" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/services/reducers/auth-reducer.test.ts" />
+      <test-names>
+        <test-name value="Проверка редьюсера authReducer" />
+        <test-name value="Проверка установки пароля при входе" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -147,8 +174,42 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test:e2e:open" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test:e2e:open" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test:e2e:run" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test:e2e:run" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test" />
+        <item itemvalue="npm.test:e2e:open" />
+        <item itemvalue="npm.test:e2e:run" />
+        <item itemvalue="Jest.Проверка редьюсера authReducer.Проверка установки пароля при входе" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>

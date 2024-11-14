@@ -91,10 +91,10 @@ const BurgerConstructor: React.FC = () => {
     };
 
     return (
-        <div className={burgerConstructorStyles.container} ref={dropTarget}>
-            <div className={burgerConstructorStyles.burgerComponents}>
+        <div className={burgerConstructorStyles.container} ref={dropTarget} data-testid="burger-constructor-container">
+            <div className={burgerConstructorStyles.burgerComponents} data-testid="burger-components">
                 {bun && (
-                    <div className={burgerConstructorStyles.elementRow}>
+                    <div className={burgerConstructorStyles.elementRow} data-testid="bun-top">
                         <div className={burgerConstructorStyles.bun}>
                             <ConstructorElement
                                 type="top"
@@ -102,12 +102,13 @@ const BurgerConstructor: React.FC = () => {
                                 text={`${bun.name} (верх)`}
                                 price={bun.price}
                                 thumbnail={bun.image}
+                                data-testid="bun-top-element"
                             />
                         </div>
                     </div>
                 )}
 
-                <section className={burgerConstructorStyles.burgerScroll}>
+                <section className={burgerConstructorStyles.burgerScroll} data-testid="ingredients-list">
                     {ingredients.map((ingredient: IIngredient, index: number) => (
                         <DraggableIngredient
                             key={ingredient.uniqueId}
@@ -115,12 +116,13 @@ const BurgerConstructor: React.FC = () => {
                             ingredient={ingredient}
                             moveIngredient={handleMoveIngredient}
                             handleRemoveIngredient={handleRemoveIngredient}
+                            data-testid={`ingredient-${ingredient.uniqueId}`}
                         />
                     ))}
                 </section>
 
                 {bun && (
-                    <div className={burgerConstructorStyles.elementRow}>
+                    <div className={burgerConstructorStyles.elementRow} data-testid="bun-bottom">
                         <div className={burgerConstructorStyles.bun}>
                             <ConstructorElement
                                 type="bottom"
@@ -128,16 +130,17 @@ const BurgerConstructor: React.FC = () => {
                                 text={`${bun.name} (низ)`}
                                 price={bun.price}
                                 thumbnail={bun.image}
+                                data-testid="bun-bottom-element"
                             />
                         </div>
                     </div>
                 )}
             </div>
 
-            <div className={burgerConstructorStyles.priceComponents}>
-                <span className={`${burgerConstructorStyles.iconBlock} text text_type_digits-medium`}>
+            <div className={burgerConstructorStyles.priceComponents} data-testid="price-components">
+                <span className={`${burgerConstructorStyles.iconBlock} text text_type_digits-medium`} data-testid="total-price">
                     {price}
-                    <span><CurrencyIcon type="primary"/></span>
+                    <span><CurrencyIcon type="primary" data-testid="currency-icon" /></span>
                 </span>
                 <Button
                     htmlType="button"
@@ -145,14 +148,15 @@ const BurgerConstructor: React.FC = () => {
                     size="large"
                     onClick={handleOrder}
                     disabled={orderRequest || !bun}
+                    data-testid="order-button"
                 >
-                    {orderRequest ? <ClipLoader/> : 'Оформить заказ'}
+                    {orderRequest ? <ClipLoader data-testid="loader" /> : 'Оформить заказ'}
                 </Button>
             </div>
 
             {isModalOpen && (
-                <Modal onClose={closeModal} title={""}>
-                    <OrderDetails/>
+                <Modal onClose={closeModal} title={""} data-testid="order-modal">
+                    <OrderDetails data-testid="order-details" />
                 </Modal>
             )}
         </div>

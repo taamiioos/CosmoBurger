@@ -11,7 +11,7 @@ export interface IProfileState {
     successPatch: boolean;
 }
 
-const initialState: IProfileState = {
+export const initialState: IProfileState = {
     email: "",
     name: "",
     error: '',

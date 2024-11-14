@@ -11,7 +11,7 @@ export interface IOrdersState {
     currentOrder: IOrder | null;
 }
 
-const initialState: IOrdersState = {
+export const initialState: IOrdersState = {
     orders: [],
     isConnected: false,
     total: 0,
