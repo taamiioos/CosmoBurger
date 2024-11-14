@@ -4,43 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="sprint 5/ step 1 fix 1">
-      <change afterPath="$PROJECT_DIR$/cypress.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cypress/fixtures/example.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cypress/integration/dnd.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cypress/plugins/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cypress/screenshots/dnd.spec.js/products management works correctly -- should drag and drop ingredients -- before all hook (failed).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cypress/support/commands.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cypress/support/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cypress/videos/dnd.spec.js.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/auth-reducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/order-reducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/password-reducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/profile-reducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/reducers/ws-reducer.test.ts" afterDir="false" />
+    <list default="true" id="52c405d2-0804-489f-a0af-19296d0309a4" name="Changes" comment="sprint 6/ step 1 fix">
+      <change afterPath="$PROJECT_DIR$/cypress/support/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress.json" beforeDir="false" afterPath="$PROJECT_DIR$/cypress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/dnd.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/dnd.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/support/commands.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/support/commands.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/draggable-ingredient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/draggable-ingredient.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ingredient-details/ingredient-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/modal-overlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modal-overlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/order-details/order-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/order-details/order-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/types/components-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/types/components-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/reducers/auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/auth-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/constructor-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/ingredients-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/reducers/order-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/order-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/reducers/password-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/password-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/reducers/profile-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/profile-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/reducers/ws-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reducers/ws-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +71,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "sprint-6/step-1",
+    "git-widget-placeholder": "#8 on sprint-6/step-1",
     "jsx.switch.disabled": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/tata/IdeaProjects/react-burgerFirst/cypress/support",
@@ -207,8 +178,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.test" />
-        <item itemvalue="npm.test:e2e:open" />
         <item itemvalue="npm.test:e2e:run" />
+        <item itemvalue="npm.test:e2e:open" />
         <item itemvalue="Jest.Проверка редьюсера authReducer.Проверка установки пароля при входе" />
         <item itemvalue="npm.build" />
       </list>
@@ -285,6 +256,7 @@
       <workItem from="1731091025855" duration="3522000" />
       <workItem from="1731103119651" duration="2925000" />
       <workItem from="1731108830027" duration="4534000" />
+      <workItem from="1731622229395" duration="6190000" />
     </task>
     <task id="LOCAL-00001" summary="sprint 1/ step 1">
       <option name="closed" value="true" />
@@ -358,7 +330,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731105793380</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="sprint 6/ step 1">
+      <option name="closed" value="true" />
+      <created>1731620531892</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1731620531892</updated>
+    </task>
+    <task id="LOCAL-00011" summary="sprint 6/ step 1 fix">
+      <option name="closed" value="true" />
+      <created>1731620725177</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1731620725177</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +373,9 @@
     <MESSAGE value="sprint 3/ step 1 fix" />
     <MESSAGE value="sprint 3/ step 1 fix 1" />
     <MESSAGE value="sprint 5/ step 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="sprint 5/ step 1" />
+    <MESSAGE value="sprint 6/ step 1" />
+    <MESSAGE value="sprint 6/ step 1 fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprint 6/ step 1 fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
