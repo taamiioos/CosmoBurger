@@ -51,73 +51,73 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className={styles.app}>
-            <AppHeader/>
+        <div className={styles.app} data-testid="main-page">
+            <AppHeader data-testid="app-header"/>
             <Routes location={background || location}>
                 <Route path="/register" element={
-                    <RestrictedRoute>
+                    <RestrictedRoute data-testid="register-route">
                         <Registration/>
                     </RestrictedRoute>
                 }/>
                 <Route path="/login" element={
-                    <RestrictedRoute>
+                    <RestrictedRoute data-testid="login-route">
                         <Login/>
                     </RestrictedRoute>
                 }/>
                 <Route path="/forgot-password" element={
-                    <RestrictedRoute>
+                    <RestrictedRoute data-testid="forgot-password-route">
                         <ForgotPassword/>
                     </RestrictedRoute>
                 }/>
                 <Route path="/reset-password" element={
-                    <RestrictedRoute>
+                    <RestrictedRoute data-testid="reset-password-route">
                         {hasVisitedForgotPassword ? <ResetPassword/> : <Navigate to="/forgot-password" replace/>}
                     </RestrictedRoute>
                 }/>
-                <Route path="/feed" element={<Feed/>}/>
+                <Route path="/feed" element={<Feed data-testid="feed-route"/>}/>
                 <Route path="/" element={
                     <DndProvider backend={HTML5Backend}>
-                        <BurgerIngredients/>
-                        <BurgerConstructor/>
+                        <BurgerIngredients data-testid="burger-ingredients"/>
+                        <BurgerConstructor data-testid="burger-constructor"/>
                     </DndProvider>
                 }/>
                 <Route path="/profile/*" element={
-                    <ProtectedRouteElement>
+                    <ProtectedRouteElement data-testid="profile-route">
                         <Profile/>
                     </ProtectedRouteElement>
                 }/>
                 <Route path="/ingredients/:id" element={
-                    <div className={styles.pageStyle}>
+                    <div className={styles.pageStyle} data-testid="ingredient-details-page">
                         <IngredientDetails/>
                     </div>
                 }/>
                 <Route path="/feed/:id" element={
-                    <div className={styles.pageStyle}>
+                    <div className={styles.pageStyle} data-testid="order-info-page">
                         <OrdersInfo/>
                     </div>
                 }/>
                 <Route path="/profile/orders/:id" element={
-                    <div className={styles.pageStyle}>
+                    <div className={styles.pageStyle} data-testid="order-info-page">
                         <OrdersInfo/>
                     </div>
                 }/>
-                <Route path="*" element={<Page404/>}/>
+                <Route path="*" element={<Page404 data-testid="404-page"/>}/>
             </Routes>
 
             {background && (
                 <Routes>
                     <Route path="/ingredients/:id" element={
-                        <Modal title="Детали ингредиента" onClose={closeModalIngredient}>
+                        <Modal title="Детали ингредиента" onClose={closeModalIngredient} data-testid="ingredient-modal">
                             <IngredientDetails/>
                         </Modal>
                     }/>
                     <Route path="/feed/:id" element={
-                        <Modal title="" onClose={closeModalFeed}>
+                        <Modal title="" onClose={closeModalFeed} data-testid="order-info-modal">
                             <OrdersInfo/>
                         </Modal>
                     }/>
                     <Route path="/profile/orders/:id" element={
-                        <Modal title="" onClose={closeModalFeedProfile}>
+                        <Modal title="" onClose={closeModalFeedProfile} data-testid="order-info-modal">
                             <OrdersInfo/>
                         </Modal>
                     }/>

@@ -18,7 +18,7 @@ export interface IAuthState {
     hasVisitedForgotPassword: boolean;
 }
 
-const initialState: IAuthState = {
+export const initialState: IAuthState = {
     isAuth: !!localStorage.getItem('accessToken'),
     user: null,
     accessToken: localStorage.getItem('accessToken') ?? null,

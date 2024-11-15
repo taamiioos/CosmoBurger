@@ -7,6 +7,7 @@ import {useParams, useNavigate, useLocation} from "react-router-dom";
 import {useInView} from 'react-intersection-observer';
 import {IIngredient} from './../types/components-types';
 import { useDispatch, useSelector } from "../../services/store";
+
 const BurgerIngredients = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -57,49 +58,55 @@ const BurgerIngredients = () => {
     };
 
     return (
-        <div className={burgerStyles.container}>
-            <h1 className="text text_type_main-large">Соберите бургер</h1>
-            <div className={burgerStyles.tabs}>
+        <div className={burgerStyles.container} data-testid="burger-ingredients-container">
+            <h1 className="text text_type_main-large" data-testid="title">Соберите бургер</h1>
+            <div className={burgerStyles.tabs} data-testid="tabs">
                 <button
                     className={useTab === "Булки" ? burgerStyles.active : ""}
-                    onClick={() => handleTabChange("Булки")}>
+                    onClick={() => handleTabChange("Булки")}
+                    data-testid="tab-buns">
                     Булки
                 </button>
                 <button
                     className={useTab === "Соусы" ? burgerStyles.active : ""}
-                    onClick={() => handleTabChange("Соусы")}>
+                    onClick={() => handleTabChange("Соусы")}
+                    data-testid="tab-sauces">
                     Соусы
                 </button>
                 <button
                     className={useTab === "Начинки" ? burgerStyles.active : ""}
-                    onClick={() => handleTabChange("Начинки")}>
+                    onClick={() => handleTabChange("Начинки")}
+                    data-testid="tab-fillings">
                     Начинки
                 </button>
             </div>
             <div className={burgerStyles.tabContent}>
-                <div className={burgerStyles.ingredients}>
-                    <h2 ref={bunsRef}>Булки</h2>
+                <div className={burgerStyles.ingredients} data-testid="ingredients-list">
+                    <h2 ref={bunsRef} data-testid="section-buns">Булки</h2>
                     {ingredients.filter((ingredient) => ingredient.type === "bun").map((ingredient) => (
                         <Ingredient
                             key={ingredient._id}
                             ingredient={ingredient}
                             handleModalOpen={handleModalOpen}
+                            data-testid={`ingredient-bun-${ingredient._id}`}
                         />
                     ))}
-                    <h2 ref={saucesRef}>Соусы</h2>
+                    <h2 ref={saucesRef} data-testid="section-sauces">Соусы</h2>
                     {ingredients.filter((ingredient) => ingredient.type === "sauce").map((ingredient) => (
                         <Ingredient
                             key={ingredient._id}
                             ingredient={ingredient}
                             handleModalOpen={handleModalOpen}
+                            data-testid={`ingredient-sauce-${ingredient._id}`}
                         />
                     ))}
-                    <h2 ref={fillingsRef}>Начинки</h2>
+                    <h2 ref={fillingsRef} data-testid="section-fillings">Начинки</h2>
                     {ingredients.filter((ingredient) => ingredient.type === "main").map((ingredient) => (
                         <Ingredient
                             key={ingredient._id}
                             ingredient={ingredient}
                             handleModalOpen={handleModalOpen}
+                            data-testid={`ingredient-filling-${ingredient._id}`}
                         />
                     ))}
                 </div>

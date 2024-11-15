@@ -11,7 +11,7 @@ export interface IIngredient {
     readonly proteins: number;
     readonly fat: number;
     readonly carbohydrates: number;
-    uniqueId?: string;
+    uniqueId: string;
 }
 
 export interface IIngredientProps {
